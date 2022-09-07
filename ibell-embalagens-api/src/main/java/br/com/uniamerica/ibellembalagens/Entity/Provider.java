@@ -2,8 +2,7 @@ package br.com.uniamerica.ibellembalagens.Entity;
 
 import java.time.LocalDateTime;
 
-public class Provider {
-
+public class Provider extends AbstractEntity{
     private String name;
     private String cnpjCpf;
     private String phoneNumber;
