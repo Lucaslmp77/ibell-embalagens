@@ -1,6 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
-public class User {
+public class User extends AbstractEntity{
 
     private String login;
     private String password;
