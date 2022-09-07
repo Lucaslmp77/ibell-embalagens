@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="projeto-ibell-embalagens:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/projeto_ibell_embalagens_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="projeto-ibell-embalagens/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="projeto-ibell-embalagens" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
