@@ -1,6 +1,7 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
 public class Inventory {
+
     private String name;
     private String code;
     private UnitMeasure unitMeasure;
