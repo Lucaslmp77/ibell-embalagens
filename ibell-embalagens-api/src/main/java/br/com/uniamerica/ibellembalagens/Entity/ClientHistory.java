@@ -1,6 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
-public class ClientHistory extends IdAbstract {
+public class ClientHistory extends AbstractEntity {
     private Client client;
     private Product product;
     private Float quantity;

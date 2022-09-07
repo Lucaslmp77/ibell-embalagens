@@ -2,7 +2,7 @@ package br.com.uniamerica.ibellembalagens.Entity;
 
 import java.time.LocalDateTime;
 
-public class Client extends IdAbstract {
+public class Client extends AbstractEntity {
     private Long id;
     private String name;
     private String cpf;
