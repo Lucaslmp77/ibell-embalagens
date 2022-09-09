@@ -1,82 +1,48 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.time.LocalDateTime;
+@Entity
 public class Client extends AbstractEntity {
+    @Getter @Setter
     private Long id;
+    @Getter @Setter
     private String name;
+    @Getter @Setter
     private String cpf;
+    @Getter @Setter
     private String phoneNumber;
+    @Getter @Setter
     private String address;
+    @Getter @Setter
     private LocalDateTime registrationDate;
+    @Getter @Setter
     private String observation;
 
-    public Client() {
-    }
+    public Client() {}
 
-    public Client(Long id,String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate, String observation) {
+    public Client(Long id, String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.registrationDate = registrationDate;
-        this.observation = observation;
     }
 
-    public Client(String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate) {
+    public Client(Long id, String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate, String observation) {
+        this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.registrationDate = registrationDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getAdress() {
-        return address;
-    }
-
-    public void setAdress(String address) {
-        this.address = address;
-    }
-
-    public LocalDateTime getRegistrationDate() {
-        return registrationDate;
-    }
-
-    public void setRegistrationDate(LocalDateTime registrationDate) {
-        this.registrationDate = registrationDate;
-    }
-
-    public String getObservacao() {
-        return observation;
-    }
-
-    public void setObservacao(String observation) {
         this.observation = observation;
     }
 

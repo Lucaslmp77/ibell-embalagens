@@ -1,14 +1,25 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
-public class StockOutput {
-
+@Entity
+public class StockOutput extends AbstractEntity {
+    @Getter @Setter
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Client client;
+    @Getter @Setter
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Product product;
+    @Getter @Setter
     private float amount;
+    @Getter @Setter
     private LocalDateTime departureDate;
-    public String observation;
+    @Getter @Setter
+    private String observation;
 
     public StockOutput() {}
 
@@ -25,37 +36,5 @@ public class StockOutput {
         this.amount = amount;
         this.departureDate = departureDate;
         this.observation = observation;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public LocalDateTime getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(LocalDateTime departureDate) {
-        this.departureDate = departureDate;
     }
 }

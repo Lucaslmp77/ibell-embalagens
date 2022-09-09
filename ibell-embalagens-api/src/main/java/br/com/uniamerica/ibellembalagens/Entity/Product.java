@@ -1,87 +1,54 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
+@Entity
 public class Product extends AbstractEntity {
-
+    @Getter @Setter
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private ProductName productName;
-
+    @Getter @Setter
     private String code;
-
+    @Getter @Setter
     private UnitMeasure unitMeasure;
-
+    @Getter @Setter
     private Float costValue;
-
+    @Getter @Setter
     private Float saleValue;
-
+    @Getter @Setter
     private LocalDateTime dateRegistration;
-
+    @Getter @Setter
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Provider provider;
-
+    @Getter @Setter
     private String observation;
 
+    public Product() {}
 
-    public ProductName getProductName() {
-        return productName;
-    }
-
-    public void setProductName(ProductName productName) {
+    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue, LocalDateTime dateRegistration, Provider provider) {
         this.productName = productName;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
         this.code = code;
-    }
-
-    public UnitMeasure getUnitMeasure() {
-        return unitMeasure;
-    }
-
-    public void setUnitMeasure(UnitMeasure unitMeasure) {
         this.unitMeasure = unitMeasure;
-    }
-
-    public Float getCostValue() {
-        return costValue;
-    }
-
-    public void setCostValue(Float costValue) {
         this.costValue = costValue;
-    }
-
-    public Float getSaleValue() {
-        return saleValue;
-    }
-
-    public void setSaleValue(Float saleValue) {
         this.saleValue = saleValue;
-    }
-
-    public LocalDateTime getDateRegistration() {
-        return dateRegistration;
-    }
-
-    public void setDateRegistration(LocalDateTime dateRegistration) {
         this.dateRegistration = dateRegistration;
-    }
-
-    public Provider getProvider() {
-        return provider;
-    }
-
-    public void setProvider(Provider provider) {
         this.provider = provider;
     }
 
-    public String getObservation() {
-        return observation;
-    }
-
-    public void setObservation(String observation) {
+    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue, LocalDateTime dateRegistration, Provider provider, String observation) {
+        this.productName = productName;
+        this.code = code;
+        this.unitMeasure = unitMeasure;
+        this.costValue = costValue;
+        this.saleValue = saleValue;
+        this.dateRegistration = dateRegistration;
+        this.provider = provider;
         this.observation = observation;
     }
 }

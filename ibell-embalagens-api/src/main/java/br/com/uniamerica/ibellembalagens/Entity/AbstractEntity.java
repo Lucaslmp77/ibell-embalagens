@@ -1,42 +1,23 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
+@MappedSuperclass
+@NoArgsConstructor
 public abstract class AbstractEntity {
+    @Id
+    @Getter @Setter
     private Long id;
+    @Getter @Setter
     private Boolean active;
+    @Getter @Setter
     private LocalDateTime register;
+    @Getter @Setter
     private LocalDateTime update;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
-
-    public LocalDateTime getRegister() {
-        return register;
-    }
-
-    public void setRegister(LocalDateTime register) {
-        this.register = register;
-    }
-
-    public LocalDateTime getUpdate() {
-        return update;
-    }
-
-    public void setUpdate(LocalDateTime update) {
-        this.update = update;
-    }
 }
