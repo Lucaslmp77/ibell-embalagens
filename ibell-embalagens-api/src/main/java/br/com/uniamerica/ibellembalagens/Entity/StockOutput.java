@@ -2,7 +2,7 @@ package br.com.uniamerica.ibellembalagens.Entity;
 
 import java.time.LocalDateTime;
 
-public class HistoryOutStock {
+public class StockOutput {
 
     private Client client;
     private Product product;
@@ -10,16 +10,16 @@ public class HistoryOutStock {
     private LocalDateTime departureDate;
     public String observation;
 
-    public HistoryOutStock() {}
+    public StockOutput() {}
 
-    public HistoryOutStock(Client client, Product product, float amount, LocalDateTime departureDate) {
+    public StockOutput(Client client, Product product, float amount, LocalDateTime departureDate) {
         this.client = client;
         this.product = product;
         this.amount = amount;
         this.departureDate = departureDate;
     }
 
-    public HistoryOutStock(Client client, Product product, float amount, LocalDateTime departureDate, String observation) {
+    public StockOutput(Client client, Product product, float amount, LocalDateTime departureDate, String observation) {
         this.client = client;
         this.product = product;
         this.amount = amount;
