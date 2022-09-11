@@ -36,7 +36,8 @@ public class Client extends AbstractEntity {
         this.registrationDate = registrationDate;
     }
 
-    public Client(Long id, String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate, String observation) {
+    public Client(Long id, String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate,
+                  String observation) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;

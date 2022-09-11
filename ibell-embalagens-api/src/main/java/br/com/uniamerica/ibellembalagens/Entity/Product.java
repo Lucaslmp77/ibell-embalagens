@@ -28,10 +28,14 @@ public class Product extends AbstractEntity {
     private Provider provider;
     @Getter @Setter
     private String observation;
+    @Getter @Setter
+    private int quantity;
+
 
     public Product() {}
 
-    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue, LocalDateTime dateRegistration, Provider provider) {
+    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
+                   LocalDateTime dateRegistration, Provider provider, int quantity) {
         this.productName = productName;
         this.code = code;
         this.unitMeasure = unitMeasure;
@@ -41,7 +45,8 @@ public class Product extends AbstractEntity {
         this.provider = provider;
     }
 
-    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue, LocalDateTime dateRegistration, Provider provider, String observation) {
+    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
+                   LocalDateTime dateRegistration, Provider provider, int quantity, String observation) {
         this.productName = productName;
         this.code = code;
         this.unitMeasure = unitMeasure;

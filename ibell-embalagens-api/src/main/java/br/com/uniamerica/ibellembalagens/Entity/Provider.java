@@ -23,7 +23,8 @@ public class Provider extends AbstractEntity {
     @Getter @Setter
     private String observation;
 
-    public Provider(String name, String cnpjCpf, String phoneNumber, String addres, String email, LocalDateTime dateRegister){
+    public Provider(String name, String cnpjCpf, String phoneNumber, String addres, String email,
+                    LocalDateTime dateRegister){
         this.name = name;
         this.cnpjCpf = cnpjCpf;
         this.phoneNumber = phoneNumber;
@@ -34,7 +35,8 @@ public class Provider extends AbstractEntity {
 
     public Provider(){}
 
-    public Provider(String name, String cnpjCpf, String phoneNumber, String addres, String email, LocalDateTime dateRegister, String observation){
+    public Provider(String name, String cnpjCpf, String phoneNumber, String addres, String email,
+                    LocalDateTime dateRegister, String observation){
         this.name = name;
         this.cnpjCpf = cnpjCpf;
         this.phoneNumber = phoneNumber;
