@@ -3,20 +3,26 @@ package br.com.uniamerica.ibellembalagens.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "td_inventory", schema = "public")
 public class Inventory extends AbstractEntity {
     @Getter @Setter
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Product product;
+
     @Getter @Setter
+    @Column(name = "unit_measure", length = 25, nullable = false)
+    @Enumerated(EnumType.STRING)
     private UnitMeasure unitMeasure;
+
     @Getter @Setter
+    @Column(name = "the_amount", nullable = false)
     private float theAmount;
+
     @Getter @Setter
+    @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
     public Inventory() {}

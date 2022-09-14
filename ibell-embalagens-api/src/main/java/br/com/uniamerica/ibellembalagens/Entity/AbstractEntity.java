@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
@@ -13,11 +14,18 @@ import java.time.LocalDateTime;
 public abstract class AbstractEntity {
     @Id
     @Getter @Setter
+    @Column(name = "id", length = 25, nullable = false, unique = true)
     private Long id;
+
     @Getter @Setter
+    @Column(name = "active", nullable = false)
     private Boolean active;
+
     @Getter @Setter
+    @Column(name = "register", nullable = false)
     private LocalDateTime register;
+
     @Getter @Setter
+    @Column(name = "update", nullable = false)
     private LocalDateTime update;
 }

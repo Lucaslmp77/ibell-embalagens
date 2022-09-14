@@ -7,18 +7,26 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "td_stock_output", schema = "public")
 public class StockOutput extends AbstractEntity {
     @Getter @Setter
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Client client;
+
     @Getter @Setter
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Product product;
+
     @Getter @Setter
+    @Column(name = "amount", nullable = false)
     private float amount;
+
     @Getter @Setter
+    @Column(name = "departure_date", length = 25, nullable = false)
     private LocalDateTime departureDate;
+
     @Getter @Setter
+    @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
     public StockOutput() {}
