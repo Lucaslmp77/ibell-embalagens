@@ -4,15 +4,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
 @NoArgsConstructor
 public abstract class AbstractEntity {
+
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     @Getter @Setter
     @Column(name = "id", length = 25, nullable = false, unique = true)
     private Long id;
@@ -28,4 +28,15 @@ public abstract class AbstractEntity {
     @Getter @Setter
     @Column(name = "update", nullable = false)
     private LocalDateTime update;
+
+    @PrePersist
+    public void dateRegister() {
+        this.setRegister(LocalDateTime.now());
+        this.setActive(true);
+    }
+
+    @PreUpdate
+    public void dateUpdate() {
+        this.setUpdate(LocalDateTime.now());
+    }
 }
