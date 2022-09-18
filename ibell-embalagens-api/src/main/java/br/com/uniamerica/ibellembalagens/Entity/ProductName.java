@@ -10,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "td_product_name", schema = "public")
 public class ProductName extends AbstractEntity {
+
     @Getter @Setter
     @Column(name = "name", length = 25, nullable = false)
     private String name;

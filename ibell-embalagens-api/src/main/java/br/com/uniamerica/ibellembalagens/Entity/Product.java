@@ -1,12 +1,16 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "td_product", schema = "public")
 public class Product extends AbstractEntity {
     @Getter @Setter
@@ -43,15 +47,8 @@ public class Product extends AbstractEntity {
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
-    @Getter @Setter
-    @Column(name = "quantity", length = 25, nullable = false)
-    private int quantity;
-
-
-    public Product() {}
-
     public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
-                   LocalDateTime dateRegistration, Provider provider, int quantity) {
+                   LocalDateTime dateRegistration, Provider provider) {
         this.productName = productName;
         this.code = code;
         this.unitMeasure = unitMeasure;
@@ -59,17 +56,5 @@ public class Product extends AbstractEntity {
         this.saleValue = saleValue;
         this.dateRegistration = dateRegistration;
         this.provider = provider;
-    }
-
-    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
-                   LocalDateTime dateRegistration, Provider provider, int quantity, String observation) {
-        this.productName = productName;
-        this.code = code;
-        this.unitMeasure = unitMeasure;
-        this.costValue = costValue;
-        this.saleValue = saleValue;
-        this.dateRegistration = dateRegistration;
-        this.provider = provider;
-        this.observation = observation;
     }
 }

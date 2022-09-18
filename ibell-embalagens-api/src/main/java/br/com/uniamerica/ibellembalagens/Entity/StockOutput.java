@@ -1,12 +1,16 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "td_stock_output", schema = "public")
 public class StockOutput extends AbstractEntity {
     @Getter @Setter
@@ -29,20 +33,10 @@ public class StockOutput extends AbstractEntity {
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
-    public StockOutput() {}
-
     public StockOutput(Client client, Product product, float amount, LocalDateTime departureDate) {
         this.client = client;
         this.product = product;
         this.amount = amount;
         this.departureDate = departureDate;
-    }
-
-    public StockOutput(Client client, Product product, float amount, LocalDateTime departureDate, String observation) {
-        this.client = client;
-        this.product = product;
-        this.amount = amount;
-        this.departureDate = departureDate;
-        this.observation = observation;
     }
 }
