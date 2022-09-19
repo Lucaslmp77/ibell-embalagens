@@ -14,9 +14,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "td_client", schema = "public")
 public class Client extends AbstractEntity {
-    @Getter @Setter
-    @Column(name = "id", length = 25, nullable = false, unique = true)
-    private Long id;
 
     @Getter @Setter
     @Column(name = "name", length = 25, nullable = false)
@@ -39,13 +36,12 @@ public class Client extends AbstractEntity {
     private LocalDateTime registrationDate;
 
     @Getter @Setter
-    @Column(name = "observation", length = 255, nullable = false)
+    @Column(name = "observation", length = 255, nullable = true)
     private String observation;
 
     public Client() {}
 
     public Client(Long id, String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate) {
-        this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.phoneNumber = phoneNumber;
@@ -55,7 +51,6 @@ public class Client extends AbstractEntity {
 
     public Client(Long id, String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate,
                   String observation) {
-        this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.phoneNumber = phoneNumber;

@@ -19,7 +19,7 @@ public class ClientHistory extends AbstractEntity {
     private Float quantity;
 
     @Getter @Setter
-    @Column(name = "observation", length = 255, nullable = false)
+    @Column(name = "observation", length = 255, nullable = true)
     private String observation;
 
     public ClientHistory() {
