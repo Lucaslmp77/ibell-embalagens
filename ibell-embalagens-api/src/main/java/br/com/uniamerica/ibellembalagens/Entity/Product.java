@@ -10,9 +10,8 @@ import java.time.LocalDateTime;
 @Table(name = "td_product", schema = "public")
 public class Product extends AbstractEntity {
     @Getter @Setter
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @Column(name = "product_name", length = 25, nullable = false, unique = true)
-    private ProductName productName;
+    @Column(name = "name", length = 25, nullable = false, unique = true)
+    private String productName;
 
     @Getter @Setter
     @Column(name = "code", length = 25, nullable = false, unique = true)
@@ -50,7 +49,7 @@ public class Product extends AbstractEntity {
 
     public Product() {}
 
-    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
+    public Product(String productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
                    LocalDateTime dateRegistration, Provider provider, int quantity) {
         this.productName = productName;
         this.code = code;
@@ -61,7 +60,7 @@ public class Product extends AbstractEntity {
         this.provider = provider;
     }
 
-    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
+    public Product(String productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
                    LocalDateTime dateRegistration, Provider provider, int quantity, String observation) {
         this.productName = productName;
         this.code = code;
