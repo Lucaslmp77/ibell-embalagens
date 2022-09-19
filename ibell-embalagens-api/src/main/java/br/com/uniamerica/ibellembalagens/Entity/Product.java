@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,14 +14,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Table(name = "td_product", schema = "public")
 public class Product extends AbstractEntity {
-    @Getter @Setter
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @Column(name = "product_name", length = 25, nullable = false, unique = true)
-    private ProductName productName;
 
     @Getter @Setter
     @Column(name = "code", length = 25, nullable = false, unique = true)
     private String code;
+
+    @Getter @Setter
+    @Column(name = "name", length = 25, nullable = false, unique = true)
+    private String productName;
 
     @Getter @Setter
     @Column(name = "unit_measure", length = 25, nullable = false)
@@ -47,7 +48,7 @@ public class Product extends AbstractEntity {
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
-    public Product(ProductName productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
+    public Product(String productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
                    LocalDateTime dateRegistration, Provider provider) {
         this.productName = productName;
         this.code = code;

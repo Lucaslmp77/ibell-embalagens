@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "td_client", schema = "public")
 public class Client extends AbstractEntity {
