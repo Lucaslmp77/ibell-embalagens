@@ -1,6 +1,8 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -10,6 +12,8 @@ import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "td_provider", schema = "public")
 public class Provider extends AbstractEntity {
     @Getter @Setter
@@ -49,31 +53,5 @@ public class Provider extends AbstractEntity {
         this.addres = addres;
         this.email = email;
         this.dateRegister = dateRegister;
-    }
-
-    public Provider(){}
-
-    public Provider(String name, String cnpjCpf, String phoneNumber, String addres, String email,
-                    LocalDateTime dateRegister, String observation){
-        this.name = name;
-        this.cnpjCpf = cnpjCpf;
-        this.phoneNumber = phoneNumber;
-        this.addres = addres;
-        this.email = email;
-        this.dateRegister = dateRegister;
-        this.observation = observation;
-    }
-
-    @Override
-    public String toString() {
-        return "Provider{" +
-                "name='" + name + '\'' +
-                ", cnpjCpf='" + cnpjCpf + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", addres='" + addres + '\'' +
-                ", email='" + email + '\'' +
-                ", dateRegister=" + dateRegister +
-                ", observation='" + observation + '\'' +
-                '}';
     }
 }

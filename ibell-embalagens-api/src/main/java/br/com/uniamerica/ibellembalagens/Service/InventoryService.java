@@ -38,4 +38,15 @@ public class InventoryService {
             throw new RuntimeException();
         }
     }
+
+    @Transactional
+    public void disable(Long id, Inventory inventory){
+        if (id == inventory.getId()) {
+            this.inventoryRepository.disable(inventory.getId());
+        }
+        else {
+            throw new RuntimeException();
+        }
+    }
+
 }
