@@ -1,13 +1,13 @@
 package br.com.uniamerica.ibellembalagens.Service;
 
-import br.com.uniamerica.ibellembalagens.Repository.ClientRepository;
+import br.com.uniamerica.ibellembalagens.Repository.AdministratorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientService {
+public class AdministratorService {
 
     @Autowired
-    private ClientRepository clientRepository;
+    private AdministratorRepository userRepository;
 
 }

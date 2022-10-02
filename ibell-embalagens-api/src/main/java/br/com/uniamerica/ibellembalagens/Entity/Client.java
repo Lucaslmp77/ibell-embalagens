@@ -13,18 +13,16 @@ import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "td_client", schema = "public")
+@Table(name = "tb_client", schema = "ibell")
 public class Client extends AbstractEntity {
-    @Getter @Setter
-    @Column(name = "id", length = 25, nullable = false, unique = true)
-    private Long id;
 
     @Getter @Setter
     @Column(name = "name", length = 25, nullable = false)
     private String name;
-    @Getter @Setter
     @CPF
+    @Getter @Setter
     @Column(name = "cpf", nullable = false, unique = true)
     private String cpf;
 
@@ -36,22 +34,12 @@ public class Client extends AbstractEntity {
     @Column(name = "address", length = 150, nullable = false)
     private String address;
 
-    @Getter @Setter
-    @Column(name = "registration_date", length = 25, nullable = false)
-    private LocalDateTime registrationDate;
+    @Getter@Setter
+    @Column(name = "email", length = 40, nullable = false)
+    private String email;
 
     @Getter @Setter
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
-    public Client() {}
-
-    public Client(Long id, String name, String cpf, String phoneNumber, String address, LocalDateTime registrationDate) {
-        this.id = id;
-        this.name = name;
-        this.cpf = cpf;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        this.registrationDate = registrationDate;
-    }
 }

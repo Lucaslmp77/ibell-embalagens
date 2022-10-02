@@ -13,8 +13,8 @@ import javax.persistence.Table;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "td_user", schema = "public")
-public class User extends AbstractEntity {
+@Table(name = "tb_administrator", schema = "ibell")
+public class Administrator extends AbstractEntity {
     @Getter @Setter
     @Length(min = 3, max = 25, message = "O login devera ter no minimo {min} caracteres e no maximo {max} caracteres")
     @Column(name = "login", length = 25, nullable = false, unique = true)
