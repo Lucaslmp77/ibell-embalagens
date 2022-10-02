@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "td_product", schema = "public")
+@Table(name = "tb_product", schema = "ibell")
 public class Product extends AbstractEntity {
 
     @Getter @Setter
@@ -22,6 +22,10 @@ public class Product extends AbstractEntity {
     @Getter @Setter
     @Column(name = "name", length = 25, nullable = false, unique = true)
     private String productName;
+
+    @Getter @Setter
+    @Column(name = "quantity", length = 10, nullable = false)
+    private float quantity;
 
     @Getter @Setter
     @Column(name = "unit_measure", length = 25, nullable = false)
@@ -37,10 +41,7 @@ public class Product extends AbstractEntity {
     private Float saleValue;
 
     @Getter @Setter
-    @Column(name = "date_registration", length = 25, nullable = false)
-    private LocalDateTime dateRegistration;
-
-    @Getter @Setter
+    @JoinColumn(name = "id_provider", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Provider provider;
 
@@ -48,14 +49,4 @@ public class Product extends AbstractEntity {
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
-    public Product(String productName, String code, UnitMeasure unitMeasure, Float costValue, Float saleValue,
-                   LocalDateTime dateRegistration, Provider provider) {
-        this.productName = productName;
-        this.code = code;
-        this.unitMeasure = unitMeasure;
-        this.costValue = costValue;
-        this.saleValue = saleValue;
-        this.dateRegistration = dateRegistration;
-        this.provider = provider;
-    }
 }

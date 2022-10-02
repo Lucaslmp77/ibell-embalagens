@@ -1,14 +1,13 @@
 package br.com.uniamerica.ibellembalagens.Controller;
 
-import br.com.uniamerica.ibellembalagens.Service.InventoryService;
-import br.com.uniamerica.ibellembalagens.Service.UserService;
+import br.com.uniamerica.ibellembalagens.Service.AdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class UserController {
+public class AdministratorController {
 
     @Autowired
-    private UserService userService;
+    private AdministratorService userService;
 
 }

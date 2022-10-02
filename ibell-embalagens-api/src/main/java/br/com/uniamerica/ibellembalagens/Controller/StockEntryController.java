@@ -1,7 +1,7 @@
 package br.com.uniamerica.ibellembalagens.Controller;
 
-import br.com.uniamerica.ibellembalagens.Entity.Inventory;
-import br.com.uniamerica.ibellembalagens.Service.InventoryService;
+import br.com.uniamerica.ibellembalagens.Entity.StockEntry;
+import br.com.uniamerica.ibellembalagens.Service.StockEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/api/inventory")
-public class InventoryController {
+public class StockEntryController {
 
     @Autowired
-    private InventoryService inventoryService;
+    private StockEntryService inventoryService;
 
     @GetMapping
-    public ResponseEntity<Page<Inventory>> listByAllPage(
+    public ResponseEntity<Page<StockEntry>> listByAllPage(
             Pageable pageable
     ){
         return ResponseEntity.ok().body(this.inventoryService.listAll(pageable));
@@ -28,7 +28,7 @@ public class InventoryController {
 
     @PostMapping
     public ResponseEntity<?> save(
-            @RequestBody Inventory inventory
+            @RequestBody StockEntry inventory
     ){
         try{
             this.inventoryService.save(inventory);

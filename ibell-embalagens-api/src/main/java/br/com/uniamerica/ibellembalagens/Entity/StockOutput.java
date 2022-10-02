@@ -11,19 +11,18 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "td_stock_output", schema = "public")
+@Table(name = "tb_stock_output", schema = "ibell")
 public class StockOutput extends AbstractEntity {
+
     @Getter @Setter
+    @JoinColumn(name = "id_client", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Client client;
 
     @Getter @Setter
+    @JoinColumn(name = "id_product", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Product product;
-
-    @Getter @Setter
-    @Column(name = "amount", nullable = false)
-    private float amount;
 
     @Getter @Setter
     @Column(name = "departure_date", length = 25, nullable = false)
@@ -33,10 +32,4 @@ public class StockOutput extends AbstractEntity {
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
-    public StockOutput(Client client, Product product, float amount, LocalDateTime departureDate) {
-        this.client = client;
-        this.product = product;
-        this.amount = amount;
-        this.departureDate = departureDate;
-    }
 }

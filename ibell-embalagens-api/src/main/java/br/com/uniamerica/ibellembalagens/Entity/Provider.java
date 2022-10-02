@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "td_provider", schema = "public")
+@Table(name = "tb_provider", schema = "ibell")
 public class Provider extends AbstractEntity {
     @Getter @Setter
     @Column(name = "name", length = 25, nullable = false)
@@ -38,20 +38,6 @@ public class Provider extends AbstractEntity {
     private String email;
 
     @Getter @Setter
-    @Column(name = "date_register", length = 25, nullable = false)
-    private LocalDateTime dateRegister;
-
-    @Getter @Setter
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
-
-    public Provider(String name, String cnpjCpf, String phoneNumber, String addres, String email,
-                    LocalDateTime dateRegister){
-        this.name = name;
-        this.cnpjCpf = cnpjCpf;
-        this.phoneNumber = phoneNumber;
-        this.addres = addres;
-        this.email = email;
-        this.dateRegister = dateRegister;
-    }
 }

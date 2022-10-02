@@ -1,8 +1,7 @@
 package br.com.uniamerica.ibellembalagens.Service;
 
-import br.com.uniamerica.ibellembalagens.Entity.Inventory;
-import br.com.uniamerica.ibellembalagens.Entity.Product;
-import br.com.uniamerica.ibellembalagens.Repository.InventoryRepository;
+import br.com.uniamerica.ibellembalagens.Entity.StockEntry;
+import br.com.uniamerica.ibellembalagens.Repository.StockEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,26 +11,26 @@ import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
-public class InventoryService {
+public class StockEntryService {
 
     @Autowired
-    private InventoryRepository inventoryRepository;
+    private StockEntryRepository inventoryRepository;
 
     @Transactional
-    public Inventory save(Inventory inventory) {
-        return this.inventoryRepository.save(inventory);
+    public StockEntry save(StockEntry stockEntry) {
+        return this.inventoryRepository.save(stockEntry);
     }
 
-    public Page<Inventory> listAll(Pageable pageable) {
+    public Page<StockEntry> listAll(Pageable pageable) {
         return this.inventoryRepository.findAll(pageable);
     }
 
-    public Optional<Inventory> findById(Long id) {
+    public Optional<StockEntry> findById(Long id) {
         return this.inventoryRepository.findById(id);
     }
 
     @Transactional
-    public void update(Long id, Inventory inventory) {
+    public void update(Long id, StockEntry inventory) {
         if(id == inventory.getId()) {
             this.inventoryRepository.save(inventory);
         } else {
@@ -40,7 +39,7 @@ public class InventoryService {
     }
 
     @Transactional
-    public void disable(Long id, Inventory inventory){
+    public void disable(Long id, StockEntry inventory){
         if (id == inventory.getId()) {
             this.inventoryRepository.disable(inventory.getId());
         }

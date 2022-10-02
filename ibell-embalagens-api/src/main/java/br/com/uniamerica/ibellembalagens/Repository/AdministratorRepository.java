@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface HistoricExitStorageRepository extends JpaRepository<StockOutput, Long> {
+public interface AdministratorRepository extends JpaRepository<StockOutput, Long> {
 
 
 
