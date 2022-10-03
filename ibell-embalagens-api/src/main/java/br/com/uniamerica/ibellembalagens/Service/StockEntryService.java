@@ -14,25 +14,25 @@ import java.util.Optional;
 public class StockEntryService {
 
     @Autowired
-    private StockEntryRepository inventoryRepository;
+    private StockEntryRepository stockEntryRepository;
 
     @Transactional
     public StockEntry save(StockEntry stockEntry) {
-        return this.inventoryRepository.save(stockEntry);
+        return this.stockEntryRepository.save(stockEntry);
     }
 
     public Page<StockEntry> listAll(Pageable pageable) {
-        return this.inventoryRepository.findAll(pageable);
+        return this.stockEntryRepository.findAll(pageable);
     }
 
     public Optional<StockEntry> findById(Long id) {
-        return this.inventoryRepository.findById(id);
+        return this.stockEntryRepository.findById(id);
     }
 
     @Transactional
-    public void update(Long id, StockEntry inventory) {
-        if(id == inventory.getId()) {
-            this.inventoryRepository.save(inventory);
+    public void update(Long id, StockEntry stockEntry) {
+        if(id == stockEntry.getId()) {
+            this.stockEntryRepository.save(stockEntry);
         } else {
             throw new RuntimeException();
         }
@@ -41,7 +41,7 @@ public class StockEntryService {
     @Transactional
     public void disable(Long id, StockEntry inventory){
         if (id == inventory.getId()) {
-            this.inventoryRepository.disable(inventory.getId());
+            this.stockEntryRepository.disable(inventory.getId());
         }
         else {
             throw new RuntimeException();

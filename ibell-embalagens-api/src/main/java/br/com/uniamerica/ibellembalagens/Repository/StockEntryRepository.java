@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface StockEntryRepository extends JpaRepository<StockEntry, Long> {
 
     @Modifying
-    @Query("UPDATE Inventory inventory SET inventory.active = false WHERE inventory.id = :id")
+    @Query("UPDATE StockEntry stockEntry SET stockEntry.active = false WHERE stockEntry.id = :id")
     public void disable(@Param("id") Long id);
 
 }

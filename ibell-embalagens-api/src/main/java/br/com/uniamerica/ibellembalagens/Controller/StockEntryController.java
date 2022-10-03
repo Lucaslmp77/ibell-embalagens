@@ -17,21 +17,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StockEntryController {
 
     @Autowired
-    private StockEntryService inventoryService;
+    private StockEntryService stockEntryService;
 
     @GetMapping
     public ResponseEntity<Page<StockEntry>> listByAllPage(
             Pageable pageable
     ){
-        return ResponseEntity.ok().body(this.inventoryService.listAll(pageable));
+        return ResponseEntity.ok().body(this.stockEntryService.listAll(pageable));
     }
 
     @PostMapping
     public ResponseEntity<?> save(
-            @RequestBody StockEntry inventory
+            @RequestBody StockEntry stockEntry
     ){
         try{
-            this.inventoryService.save(inventory);
+            this.stockEntryService.save(stockEntry);
             return ResponseEntity.ok().body("Inventario cadastrado!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
