@@ -15,6 +15,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @Table(name = "tb_administrator", schema = "ibell")
 public class Administrator extends AbstractEntity {
+
     @Getter @Setter
     @Length(min = 3, max = 25, message = "O login devera ter no minimo {min} caracteres e no maximo {max} caracteres")
     @Column(name = "login", length = 25, nullable = false, unique = true)
@@ -24,4 +25,5 @@ public class Administrator extends AbstractEntity {
     @Length(min = 3, max = 25, message = "A senha devera ter no minimo {min} caracteres e no maximo {max} caracteres")
     @Column(name = "password", length = 25, nullable = false)
     private String password;
+
 }

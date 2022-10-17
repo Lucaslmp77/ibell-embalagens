@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -13,15 +14,19 @@ import javax.persistence.*;
 @Table(name = "tb_stock_entry", schema = "ibell")
 public class StockEntry extends AbstractEntity {
 
-    @Getter @Setter
-    @JoinColumn(name = "id_product", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Product product;
+    @Getter@Setter
+    @ManyToMany
+    @JoinTable(name = "stockEntry_product", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_stockEntry"),
+            inverseJoinColumns = @JoinColumn(name = "id_product"))
+    private List<Product> productList;
 
     @Getter@Setter
-    @JoinColumn(name = "id_provider", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Provider provider;
+    @ManyToMany
+    @JoinTable(name = "stockEntry_provider", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_stockEntry"),
+            inverseJoinColumns = @JoinColumn(name = "id_provider"))
+    private List<Provider> providerList;
 
     @Getter@Setter
     @Column(name = "observation", length = 255, nullable = false)
