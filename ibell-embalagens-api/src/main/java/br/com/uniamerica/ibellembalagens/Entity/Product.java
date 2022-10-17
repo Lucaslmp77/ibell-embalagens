@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -41,12 +42,22 @@ public class Product extends AbstractEntity {
     private Float saleValue;
 
     @Getter @Setter
-    @JoinColumn(name = "id_provider", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Provider provider;
+    @ManyToMany
+    @JoinTable(name = "product_provider", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_product"),
+            inverseJoinColumns = @JoinColumn(name = "id_provider"))
+    private List<Provider> providerList;
 
     @Getter @Setter
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
+
+    @Getter @Setter
+    @ManyToMany(mappedBy = "productList")
+    private List<StockOutput> stockOutputList;
+
+    @Getter @Setter
+    @ManyToMany(mappedBy = "productList")
+    private List<StockEntry> stockEntryList;
 
 }

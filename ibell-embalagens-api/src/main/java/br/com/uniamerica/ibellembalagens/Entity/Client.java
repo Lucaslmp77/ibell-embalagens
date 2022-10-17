@@ -6,11 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -21,6 +19,7 @@ public class Client extends AbstractEntity {
     @Getter @Setter
     @Column(name = "name", length = 25, nullable = false)
     private String name;
+
     @CPF
     @Getter @Setter
     @Column(name = "cpf", nullable = false, unique = true)
@@ -41,5 +40,9 @@ public class Client extends AbstractEntity {
     @Getter @Setter
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
+
+    @Getter @Setter
+    @ManyToMany(mappedBy = "clientList")
+    private List<StockOutput> stockOutputList;
 
 }

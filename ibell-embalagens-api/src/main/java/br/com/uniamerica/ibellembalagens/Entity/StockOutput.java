@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -14,15 +15,19 @@ import java.time.LocalDateTime;
 @Table(name = "tb_stock_output", schema = "ibell")
 public class StockOutput extends AbstractEntity {
 
-    @Getter @Setter
-    @JoinColumn(name = "id_client", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Client client;
+    @Getter@Setter
+    @ManyToMany
+    @JoinTable(name = "stockOutput_client", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_stockOutput"),
+            inverseJoinColumns = @JoinColumn(name = "id_client"))
+    private List<Client> clientList;
 
-    @Getter @Setter
-    @JoinColumn(name = "id_product", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    private Product product;
+    @Getter@Setter
+    @ManyToMany
+    @JoinTable(name = "stockOutput_product", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_stockOutput"),
+            inverseJoinColumns = @JoinColumn(name = "id_product"))
+    private List<Product> productList;
 
     @Getter @Setter
     @Column(name = "departure_date", length = 25, nullable = false)
