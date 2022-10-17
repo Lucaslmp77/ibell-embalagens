@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tb_inventory", schema = "ibell")
+@Table(name = "tb_stock_entry", schema = "ibell")
 public class StockEntry extends AbstractEntity {
 
     @Getter @Setter
