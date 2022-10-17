@@ -11,8 +11,8 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "tb_stock_entry", schema = "ibell")
-public class StockEntry extends AbstractEntity {
+@Table(name = "tb_stock_input", schema = "ibell")
+public class StockInput extends AbstractEntity {
 
     @Getter@Setter
     @ManyToMany

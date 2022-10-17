@@ -1,7 +1,7 @@
 package br.com.uniamerica.ibellembalagens.Controller;
 
-import br.com.uniamerica.ibellembalagens.Entity.StockEntry;
-import br.com.uniamerica.ibellembalagens.Service.StockEntryService;
+import br.com.uniamerica.ibellembalagens.Entity.StockInput;
+import br.com.uniamerica.ibellembalagens.Service.StockInputService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/api/inventory")
-public class StockEntryController {
+public class StockInputController {
 
     @Autowired
-    private StockEntryService stockEntryService;
+    private StockInputService stockInputService;
 
     @GetMapping
-    public ResponseEntity<Page<StockEntry>> listByAllPage(
+    public ResponseEntity<Page<StockInput>> listByAllPage(
             Pageable pageable
     ){
-        return ResponseEntity.ok().body(this.stockEntryService.listAll(pageable));
+        return ResponseEntity.ok().body(this.stockInputService.listAll(pageable));
     }
 
     @PostMapping
     public ResponseEntity<?> save(
-            @RequestBody StockEntry stockEntry
+            @RequestBody StockInput stockInput
     ){
         try{
-            this.stockEntryService.save(stockEntry);
+            this.stockInputService.save(stockInput);
             return ResponseEntity.ok().body("Inventario cadastrado!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());

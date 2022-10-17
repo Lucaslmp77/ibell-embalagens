@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -49,5 +48,5 @@ public class Provider extends AbstractEntity {
 
     @Getter @Setter
     @ManyToMany(mappedBy = "providerList")
-    private List<StockEntry> stockEntryList;
+    private List<StockInput> stockInputList;
 }
