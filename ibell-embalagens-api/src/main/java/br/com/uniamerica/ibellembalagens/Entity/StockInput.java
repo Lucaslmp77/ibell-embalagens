@@ -16,15 +16,15 @@ public class StockInput extends AbstractEntity {
 
     @Getter@Setter
     @ManyToMany
-    @JoinTable(name = "stockInput_product", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_stockInput"),
+    @JoinTable(name = "stock_input_product", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_stock_input"),
             inverseJoinColumns = @JoinColumn(name = "id_product"))
     private List<Product> productList;
 
     @Getter@Setter
     @ManyToMany
-    @JoinTable(name = "stockInput_provider", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_stockInput"),
+    @JoinTable(name = "stock_input_provider", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_stock_input"),
             inverseJoinColumns = @JoinColumn(name = "id_provider"))
     private List<Provider> providerList;
 

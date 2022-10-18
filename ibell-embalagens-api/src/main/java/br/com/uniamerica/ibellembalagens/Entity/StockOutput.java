@@ -17,15 +17,15 @@ public class StockOutput extends AbstractEntity {
 
     @Getter@Setter
     @ManyToMany
-    @JoinTable(name = "stockOutput_client", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_stockOutput"),
+    @JoinTable(name = "stock_output_client", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_stock_output"),
             inverseJoinColumns = @JoinColumn(name = "id_client"))
     private List<Client> clientList;
 
     @Getter@Setter
     @ManyToMany
-    @JoinTable(name = "stockOutput_product", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_stockOutput"),
+    @JoinTable(name = "stock_output_product", schema = "ibell",
+            joinColumns = @JoinColumn(name = "id_stock_output"),
             inverseJoinColumns = @JoinColumn(name = "id_product"))
     private List<Product> productList;
 
