@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/api/inventory")
+@RequestMapping("/api/stockInput")
 public class StockInputController {
 
     @Autowired

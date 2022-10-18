@@ -20,7 +20,6 @@ public class StockInputService {
     public StockInput save(StockInput stockInput) {
         return this.stockInputRepository.save(stockInput);
     }
-
     public Page<StockInput> listAll(Pageable pageable) {
         return this.stockInputRepository.findAll(pageable);
     }
@@ -39,9 +38,9 @@ public class StockInputService {
     }
 
     @Transactional
-    public void disable(Long id, StockInput inventory){
-        if (id == inventory.getId()) {
-            this.stockInputRepository.disable(inventory.getId());
+    public void disable(Long id, StockInput stockInput){
+        if (id == stockInput.getId()) {
+            this.stockInputRepository.disable(stockInput.getId());
         }
         else {
             throw new RuntimeException();
