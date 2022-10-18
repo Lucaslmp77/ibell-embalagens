@@ -17,20 +17,20 @@ import java.util.List;
 public class Client extends AbstractEntity {
 
     @Getter @Setter
-    @Column(name = "name", length = 25, nullable = false)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
     @CPF
     @Getter @Setter
-    @Column(name = "cpf", nullable = false, unique = true)
+    @Column(name = "cpf", length = 18, nullable = false, unique = true)
     private String cpf;
 
     @Getter @Setter
-    @Column(name = "phone_number", length = 25, nullable = false)
+    @Column(name = "phone_number", length = 14, nullable = false)
     private String phoneNumber;
 
     @Getter @Setter
-    @Column(name = "address", length = 150, nullable = false)
+    @Column(name = "address", length = 50, nullable = false)
     private String address;
 
     @Getter@Setter

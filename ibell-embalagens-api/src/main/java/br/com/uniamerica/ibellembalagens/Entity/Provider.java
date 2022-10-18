@@ -15,19 +15,19 @@ import java.util.List;
 @Table(name = "tb_provider", schema = "ibell")
 public class Provider extends AbstractEntity {
     @Getter @Setter
-    @Column(name = "name", length = 25, nullable = false)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
     @Getter @Setter
-    @Column(name = "cnpj_cpf", length = 25, nullable = false)
+    @Column(name = "cnpj_cpf", length = 18, nullable = false)
     private String cnpjCpf;
 
     @Getter @Setter
-    @Column(name = "phone_number", length = 25, nullable = false)
+    @Column(name = "phone_number", length = 14, nullable = false)
     private String phoneNumber;
 
     @Getter @Setter
-    @Column(name = "addres", length = 150, nullable = false)
+    @Column(name = "addres", length = 50, nullable = false)
     private String addres;
 
     @Getter @Setter

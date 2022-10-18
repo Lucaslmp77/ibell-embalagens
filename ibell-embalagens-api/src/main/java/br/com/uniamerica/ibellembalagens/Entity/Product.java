@@ -15,11 +15,11 @@ import java.util.List;
 public class Product extends AbstractEntity {
 
     @Getter @Setter
-    @Column(name = "code", length = 25, nullable = false, unique = true)
+    @Column(name = "code", length = 15, nullable = false, unique = true)
     private String code;
 
     @Getter @Setter
-    @Column(name = "name", length = 25, nullable = false, unique = true)
+    @Column(name = "name", length = 50, nullable = false, unique = true)
     private String productName;
 
     @Getter @Setter
