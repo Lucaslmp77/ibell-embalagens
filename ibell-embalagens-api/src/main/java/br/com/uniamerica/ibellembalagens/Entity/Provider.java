@@ -19,7 +19,7 @@ public class Provider extends AbstractEntity {
     private String name;
 
     @Getter @Setter
-    @Column(name = "cnpj_cpf", length = 18, nullable = false)
+    @Column(name = "cnpj_cpf", length = 18, nullable = false, unique = true)
     private String cnpjCpf;
 
     @Getter @Setter
