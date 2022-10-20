@@ -8,6 +8,6 @@ import org.springframework.stereotype.Controller;
 public class AdministratorController {
 
     @Autowired
-    private AdministratorService userService;fwjhmjnskldamd.a;
+    private AdministratorService userService;
 
 }
