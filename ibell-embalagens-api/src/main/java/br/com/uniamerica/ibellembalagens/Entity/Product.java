@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Product extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "quantity", length = 10, nullable = false)
-    private float quantity;
+    private BigDecimal quantity;
 
     @Getter @Setter
     @Column(name = "unit_measure", length = 25, nullable = false)
@@ -33,29 +34,20 @@ public class Product extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "cost_value", nullable = false)
-    private Float costValue;
+    private BigDecimal costValue;
 
     @Getter @Setter
     @Column(name = "sale_value", nullable = false)
-    private Float saleValue;
+    private BigDecimal saleValue;
 
     @Getter @Setter
-    @ManyToMany
-    @JoinTable(name = "product_provider", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_product"),
-            inverseJoinColumns = @JoinColumn(name = "id_provider"))
-    private List<Provider> providerList;
+    @JoinColumn(name = "id_provider", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Provider provider;
 
     @Getter @Setter
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
-    @Getter @Setter
-    @ManyToMany(mappedBy = "productList")
-    private List<StockOutput> stockOutputList;
-
-    @Getter @Setter
-    @ManyToMany(mappedBy = "productList")
-    private List<StockInput> stockInputList;
 
 }

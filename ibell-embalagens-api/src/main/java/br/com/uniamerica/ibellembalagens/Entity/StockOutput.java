@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,19 +16,23 @@ import java.util.List;
 @Table(name = "tb_stock_output", schema = "ibell")
 public class StockOutput extends AbstractEntity {
 
-    @Getter@Setter
-    @ManyToMany
-    @JoinTable(name = "stock_output_client", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_stock_output"),
-            inverseJoinColumns = @JoinColumn(name = "id_client"))
-    private List<Client> clientList;
+    @Getter @Setter
+    @JoinColumn(name = "id_client", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Client client;
 
-    @Getter@Setter
-    @ManyToMany
-    @JoinTable(name = "stock_output_product", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_stock_output"),
-            inverseJoinColumns = @JoinColumn(name = "id_product"))
-    private List<Product> productList;
+    @Getter @Setter
+    @JoinColumn(name = "id_product", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Product product;
+
+    @Getter @Setter
+    @Column(name = "quantidade_saida", length = 25, nullable = false)
+    private BigDecimal quantidadeSaida;
+
+    @Getter @Setter
+    @Column(name = "preco_saida", length = 25, nullable = false)
+    private BigDecimal precoSaida;
 
     @Getter @Setter
     @Column(name = "departure_date", length = 25, nullable = false)
