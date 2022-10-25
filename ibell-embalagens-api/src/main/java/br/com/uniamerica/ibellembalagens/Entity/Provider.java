@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "tb_provider", schema = "ibell")
 public class Provider extends AbstractEntity {
+
     @Getter @Setter
     @Column(name = "name", length = 50, nullable = false)
     private String name;
@@ -39,11 +40,4 @@ public class Provider extends AbstractEntity {
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
 
-    @Getter @Setter
-    @ManyToMany(mappedBy = "providerList")
-    private List<Product> productList;
-
-    @Getter @Setter
-    @ManyToMany(mappedBy = "providerList")
-    private List<StockInput> stockInputList;
 }

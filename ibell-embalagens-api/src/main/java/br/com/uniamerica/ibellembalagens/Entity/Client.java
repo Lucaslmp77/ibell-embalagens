@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -34,15 +35,12 @@ public class Client extends AbstractEntity {
     private String address;
 
     @Getter@Setter
+    @Email
     @Column(name = "email", length = 40, nullable = false)
     private String email;
 
     @Getter @Setter
     @Column(name = "observation", length = 255, nullable = false)
     private String observation;
-
-    @Getter @Setter
-    @ManyToMany(mappedBy = "clientList")
-    private List<StockOutput> stockOutputList;
 
 }

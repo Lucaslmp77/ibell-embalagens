@@ -14,19 +14,15 @@ import java.util.List;
 @Table(name = "tb_stock_input", schema = "ibell")
 public class StockInput extends AbstractEntity {
 
-    @Getter@Setter
-    @ManyToMany
-    @JoinTable(name = "stock_input_product", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_stock_input"),
-            inverseJoinColumns = @JoinColumn(name = "id_product"))
-    private List<Product> productList;
+    @Getter @Setter
+    @JoinColumn(name = "id_product", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Product product;
 
-    @Getter@Setter
-    @ManyToMany
-    @JoinTable(name = "stock_input_provider", schema = "ibell",
-            joinColumns = @JoinColumn(name = "id_stock_input"),
-            inverseJoinColumns = @JoinColumn(name = "id_provider"))
-    private List<Provider> providerList;
+    @Getter @Setter
+    @JoinColumn(name = "id_provider", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Provider provider;
 
     @Getter@Setter
     @Column(name = "observation", length = 255, nullable = false)
