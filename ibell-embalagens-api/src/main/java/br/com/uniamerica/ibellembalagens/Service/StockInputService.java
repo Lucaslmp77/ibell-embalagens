@@ -3,12 +3,10 @@ package br.com.uniamerica.ibellembalagens.Service;
 import br.com.uniamerica.ibellembalagens.Entity.StockInput;
 import br.com.uniamerica.ibellembalagens.Repository.StockInputRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class StockInputService {
@@ -20,12 +18,13 @@ public class StockInputService {
     public StockInput save(StockInput stockInput) {
         return this.stockInputRepository.save(stockInput);
     }
-    public Page<StockInput> listAll(Pageable pageable) {
-        return this.stockInputRepository.findAll(pageable);
+
+    public List<StockInput> listAll() {
+        return this.stockInputRepository.findAll();
     }
 
-    public Optional<StockInput> findById(Long id) {
-        return this.stockInputRepository.findById(id);
+    public StockInput findById(Long id) {
+        return this.stockInputRepository.findById(id).orElse(new StockInput());
     }
 
     @Transactional

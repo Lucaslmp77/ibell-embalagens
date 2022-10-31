@@ -17,9 +17,9 @@ import javax.persistence.Table;
 public class Administrator extends AbstractEntity {
 
     @Getter @Setter
-    @Length(min = 3, max = 25, message = "O login devera ter no minimo {min} caracteres e no maximo {max} caracteres")
-    @Column(name = "login", length = 25, nullable = false, unique = true)
-    private String login;
+    @Length(min = 3, max = 25, message = "O username devera ter no minimo {min} caracteres e no maximo {max} caracteres")
+    @Column(name = "username", length = 25, nullable = false, unique = true)
+    private String username;
 
     @Getter @Setter
     @Length(min = 3, max = 25, message = "A senha devera ter no minimo {min} caracteres e no maximo {max} caracteres")

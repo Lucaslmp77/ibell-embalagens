@@ -3,14 +3,11 @@ package br.com.uniamerica.ibellembalagens.Controller;
 import br.com.uniamerica.ibellembalagens.Entity.StockInput;
 import br.com.uniamerica.ibellembalagens.Service.StockInputService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/stockInput")
@@ -19,20 +16,53 @@ public class StockInputController {
     @Autowired
     private StockInputService stockInputService;
 
-    @GetMapping
-    public ResponseEntity<Page<StockInput>> listByAllPage(
-            Pageable pageable
-    ){
-        return ResponseEntity.ok().body(this.stockInputService.listAll(pageable));
-    }
-
     @PostMapping
     public ResponseEntity<?> save(
             @RequestBody StockInput stockInput
     ){
         try{
             this.stockInputService.save(stockInput);
-            return ResponseEntity.ok().body("Inventario cadastrado!");
+            return ResponseEntity.ok().body("Entrada de estoque cadastrada!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<StockInput>> listAll(
+
+    ){
+        return ResponseEntity.ok().body(this.stockInputService.listAll());
+    }
+
+    @GetMapping("/{idStockInput}")
+    public ResponseEntity<StockInput> findById(
+            @PathVariable("idStockInput") Long idStockInput
+    ){
+        return ResponseEntity.ok().body(this.stockInputService.findById(idStockInput));
+    }
+
+    @PutMapping("/{idStockInput}")
+    public ResponseEntity<?> update(
+            @PathVariable Long idStockInput,
+            @RequestBody StockInput stockInput
+    ){
+        try{
+            this.stockInputService.update(idStockInput, stockInput);
+            return ResponseEntity.ok().body("Entrada de estoque atualizada com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/ativo/{idStockInput}")
+    public ResponseEntity<?> disable(
+            @PathVariable Long idStockInput,
+            @RequestBody StockInput stockInput
+    ){
+        try{
+            this.stockInputService.disable(idStockInput, stockInput);
+            return ResponseEntity.ok().body("Entrada de estoque desativada com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
