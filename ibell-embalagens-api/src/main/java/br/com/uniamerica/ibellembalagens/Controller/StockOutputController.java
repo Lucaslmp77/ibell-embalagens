@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/stockOutput")
+@RequestMapping("/api/stock-output")
 public class StockOutputController {
 
     @Autowired
@@ -55,7 +55,7 @@ public class StockOutputController {
         }
     }
 
-    @PutMapping("/ativo/{idStockOutput}")
+    @PutMapping("/active/{idStockOutput}")
     public ResponseEntity<?> disable(
             @PathVariable Long idStockOutput,
             @RequestBody StockOutput stockOutput

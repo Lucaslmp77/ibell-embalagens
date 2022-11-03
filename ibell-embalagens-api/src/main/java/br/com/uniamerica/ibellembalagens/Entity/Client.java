@@ -1,13 +1,9 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "tb_client", schema = "ibell")
@@ -34,7 +30,7 @@ public class Client extends AbstractEntity {
     private String email;
 
     @Getter @Setter
-    @Column(name = "observation", length = 255, nullable = false)
+    @Column(name = "observation", length = 255, nullable = true)
     private String observation;
 
 }

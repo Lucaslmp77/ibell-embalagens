@@ -55,7 +55,7 @@ public class ProductController {
         }
     }
 
-    @PutMapping("/ativo/{idProduct}")
+    @PutMapping("/active/{idProduct}")
     public ResponseEntity<?> disable(
             @PathVariable Long idProduct,
             @RequestBody Product product

@@ -46,4 +46,13 @@ public class StockInputService {
         }
     }
 
+    public List<StockInput> findByProductInStockInput(Long id) {
+        return this.stockInputRepository.findByProductInStockInput(id);
+    }
+
+    public List<StockInput> findByProviderInStockInput(Long id) {
+        return this.stockInputRepository.findByProviderInStockInput(id);
+
+    }
+
 }

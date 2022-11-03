@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/stockInput")
+@RequestMapping("/api/stock-input")
 public class StockInputController {
 
     @Autowired
@@ -55,7 +55,7 @@ public class StockInputController {
         }
     }
 
-    @PutMapping("/ativo/{idStockInput}")
+    @PutMapping("/active/{idStockInput}")
     public ResponseEntity<?> disable(
             @PathVariable Long idStockInput,
             @RequestBody StockInput stockInput
@@ -66,6 +66,16 @@ public class StockInputController {
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping("/product/{idProduct}")
+    public ResponseEntity<?> findByProductInStockInput(@PathVariable("idProduct") Long idProduct) {
+        return ResponseEntity.ok().body(this.stockInputService.findByProductInStockInput(idProduct));
+    }
+
+    @GetMapping("/provider/{idProvider}")
+    public ResponseEntity<?> findByProviderInStockInput(@PathVariable("idProvider") Long idProvider) {
+        return ResponseEntity.ok().body(this.stockInputService.findByProviderInStockInput(idProvider));
     }
 
 }

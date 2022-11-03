@@ -55,7 +55,7 @@ public class ProviderController {
         }
     }
 
-    @PutMapping("/ativo/{idProvider}")
+    @PutMapping("/active/{idProvider}")
     public ResponseEntity<?> disable(
             @PathVariable Long idProvider,
             @RequestBody Provider provider

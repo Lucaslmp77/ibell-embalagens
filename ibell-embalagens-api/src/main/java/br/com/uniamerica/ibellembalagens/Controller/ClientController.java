@@ -55,7 +55,7 @@ public class ClientController {
         }
     }
 
-    @PutMapping("/ativo/{idClient}")
+    @PutMapping("/active/{idClient}")
     public ResponseEntity<?> disable(
             @PathVariable Long idClient,
             @RequestBody Client client

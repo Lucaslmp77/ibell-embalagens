@@ -2,7 +2,6 @@ package br.com.uniamerica.ibellembalagens.Service;
 
 import br.com.uniamerica.ibellembalagens.Entity.Client;
 import br.com.uniamerica.ibellembalagens.Repository.ClientRepository;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -55,7 +55,7 @@ public class AdministratorController {
         }
     }
 
-    @PutMapping("/ativo/{idAdm}")
+    @PutMapping("/active/{idAdm}")
     public ResponseEntity<?> disable(
             @PathVariable Long idAdm,
             @RequestBody Administrator administrator

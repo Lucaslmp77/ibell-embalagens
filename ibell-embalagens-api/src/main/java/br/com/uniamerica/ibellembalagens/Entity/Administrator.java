@@ -1,8 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 

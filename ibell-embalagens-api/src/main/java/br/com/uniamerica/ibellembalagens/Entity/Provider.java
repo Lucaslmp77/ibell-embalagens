@@ -1,8 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -34,7 +32,7 @@ public class Provider extends AbstractEntity {
     private String email;
 
     @Getter @Setter
-    @Column(name = "observation", length = 255, nullable = false)
+    @Column(name = "observation", length = 255, nullable = true)
     private String observation;
 
 }
