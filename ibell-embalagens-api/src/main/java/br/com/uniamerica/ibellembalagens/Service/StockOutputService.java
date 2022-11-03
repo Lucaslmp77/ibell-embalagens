@@ -46,4 +46,8 @@ public class StockOutputService {
         }
     }
 
+    public List<StockOutput> findByClientInStockOutput(Long id) {
+        return this.stockOutputRepository.findByClientInStockOutput(id);
+    }
+
 }

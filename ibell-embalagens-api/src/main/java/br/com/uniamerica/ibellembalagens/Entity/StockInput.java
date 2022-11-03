@@ -8,19 +8,17 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tb_stock_input", schema = "ibell")
 public class StockInput extends AbstractEntity {
 
     @Getter @Setter
     @JoinColumn(name = "id_product", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Product product;
 
     @Getter @Setter
     @JoinColumn(name = "id_provider", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Provider provider;
 
     @Getter@Setter

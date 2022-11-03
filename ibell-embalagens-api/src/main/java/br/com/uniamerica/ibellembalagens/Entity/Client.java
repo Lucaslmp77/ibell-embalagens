@@ -10,8 +10,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tb_client", schema = "ibell")
 public class Client extends AbstractEntity {
 
@@ -19,7 +17,6 @@ public class Client extends AbstractEntity {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
-    @CPF
     @Getter @Setter
     @Column(name = "cpf", length = 18, nullable = false, unique = true)
     private String cpf;
@@ -33,7 +30,6 @@ public class Client extends AbstractEntity {
     private String address;
 
     @Getter@Setter
-    @Email
     @Column(name = "email", length = 40, nullable = false)
     private String email;
 

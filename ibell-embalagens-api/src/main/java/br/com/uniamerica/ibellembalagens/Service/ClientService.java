@@ -2,6 +2,7 @@ package br.com.uniamerica.ibellembalagens.Service;
 
 import br.com.uniamerica.ibellembalagens.Entity.Client;
 import br.com.uniamerica.ibellembalagens.Repository.ClientRepository;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class ClientService {
 
     @Transactional
     public Client save(Client client) {
+        System.out.println("print save service" + client);
         return this.clientRepository.save(client);
     }
 

@@ -7,11 +7,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface StockOutputRepository extends JpaRepository<StockOutput, Long> {
 
     @Modifying
     @Query("UPDATE StockOutput stockOutput SET stockOutput.active = false WHERE stockOutput.id = :id")
     public void disable(@Param("id") Long id);
+
+    @Query("FROM StockOutput stockOutput WHERE stockOutput.client.id = :idClient")
+    public List<StockOutput> findByClientInStockOutput(@Param("idClient") Long idClient);
 
 }

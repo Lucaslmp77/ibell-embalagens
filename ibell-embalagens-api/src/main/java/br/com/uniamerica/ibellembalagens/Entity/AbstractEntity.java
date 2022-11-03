@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public abstract class AbstractEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     @Column(name = "id", length = 25, nullable = false, unique = true)
     private Long id;
@@ -26,7 +26,7 @@ public abstract class AbstractEntity {
     private LocalDateTime register;
 
     @Getter @Setter
-    @Column(name = "update", nullable = false)
+    @Column(name = "update", nullable = true)
     private LocalDateTime update;
 
     @PrePersist

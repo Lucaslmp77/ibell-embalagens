@@ -9,8 +9,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tb_provider", schema = "ibell")
 public class Provider extends AbstractEntity {
 

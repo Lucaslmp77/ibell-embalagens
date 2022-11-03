@@ -68,4 +68,9 @@ public class StockOutputController {
         }
     }
 
+    @GetMapping("/client/{idClient}")
+    public ResponseEntity<?> findByClientInStockOutput(@PathVariable("idClient") Long idClient) {
+        return ResponseEntity.ok().body(this.stockOutputService.findByClientInStockOutput(idClient));
+    }
+
 }

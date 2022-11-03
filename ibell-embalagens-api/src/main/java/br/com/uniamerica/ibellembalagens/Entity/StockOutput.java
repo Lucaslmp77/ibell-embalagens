@@ -10,19 +10,17 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tb_stock_output", schema = "ibell")
 public class StockOutput extends AbstractEntity {
 
     @Getter @Setter
     @JoinColumn(name = "id_client", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Client client;
 
     @Getter @Setter
     @JoinColumn(name = "id_product", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Product product;
 
     @Getter @Setter

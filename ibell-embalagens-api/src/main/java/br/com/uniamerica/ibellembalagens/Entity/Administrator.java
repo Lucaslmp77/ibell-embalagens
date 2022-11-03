@@ -11,8 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tb_administrator", schema = "ibell")
 public class Administrator extends AbstractEntity {
 

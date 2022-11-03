@@ -9,8 +9,6 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "tb_product", schema = "ibell")
 public class Product extends AbstractEntity {
 
@@ -41,7 +39,7 @@ public class Product extends AbstractEntity {
 
     @Getter @Setter
     @JoinColumn(name = "id_provider", nullable = false)
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Provider provider;
 
     @Getter @Setter
