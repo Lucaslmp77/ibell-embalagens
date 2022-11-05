@@ -16,6 +16,10 @@ public interface StockOutputRepository extends JpaRepository<StockOutput, Long> 
     @Query("UPDATE StockOutput stockOutput SET stockOutput.active = false WHERE stockOutput.id = :id")
     public void disable(@Param("id") Long id);
 
+    @Modifying
+    @Query("UPDATE StockOutput stockOutput SET stockOutput.active = true WHERE stockOutput.id = :id")
+    public void enabled(@Param("id") Long id);
+
     @Query("FROM StockOutput stockOutput WHERE stockOutput.client.id = :idClient")
     public List<StockOutput> findByClientInStockOutput(@Param("idClient") Long idClient);
 

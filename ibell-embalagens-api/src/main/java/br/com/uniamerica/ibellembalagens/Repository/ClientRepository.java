@@ -14,4 +14,8 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     @Query("UPDATE Client client SET client.active = false WHERE client.id = :id")
     public void disable(@Param("id") Long id);
 
+    @Modifying
+    @Query("UPDATE Client client SET client.active = true WHERE client.id = :id")
+    public void enabled(@Param("id") Long id);
+
 }

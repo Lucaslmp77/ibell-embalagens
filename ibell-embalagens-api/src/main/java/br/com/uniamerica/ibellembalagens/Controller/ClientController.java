@@ -55,14 +55,25 @@ public class ClientController {
         }
     }
 
-    @PutMapping("/active/{idClient}")
+    @PutMapping("/disable/{idClient}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idClient,
-            @RequestBody Client client
+            @PathVariable Long idClient
     ){
         try{
-            this.clientService.disable(idClient, client);
+            this.clientService.disable(idClient);
             return ResponseEntity.ok().body("Cliente desativado com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/enabled/{idClient}")
+    public ResponseEntity<?> enabled(
+            @PathVariable Long idClient
+    ){
+        try{
+            this.clientService.enabled(idClient);
+            return ResponseEntity.ok().body("Cliente ativado com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

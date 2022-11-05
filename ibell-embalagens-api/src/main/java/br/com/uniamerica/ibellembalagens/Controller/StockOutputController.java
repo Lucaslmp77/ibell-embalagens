@@ -55,14 +55,25 @@ public class StockOutputController {
         }
     }
 
-    @PutMapping("/active/{idStockOutput}")
+    @PutMapping("/disable/{idStockOutput}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idStockOutput,
-            @RequestBody StockOutput stockOutput
+            @PathVariable Long idStockOutput
     ){
         try{
-            this.stockOutputService.disable(idStockOutput, stockOutput);
+            this.stockOutputService.disable(idStockOutput);
             return ResponseEntity.ok().body("Saida de estoque desativada com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/enabled/{idStockOutput}")
+    public ResponseEntity<?> enabled(
+            @PathVariable Long idStockOutput
+    ){
+        try{
+            this.stockOutputService.enabled(idStockOutput);
+            return ResponseEntity.ok().body("Saida de estoque ativada com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

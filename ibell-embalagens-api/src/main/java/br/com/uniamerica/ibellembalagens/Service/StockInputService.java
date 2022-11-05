@@ -37,9 +37,21 @@ public class StockInputService {
     }
 
     @Transactional
-    public void disable(Long id, StockInput stockInput){
-        if (id == stockInput.getId()) {
-            this.stockInputRepository.disable(stockInput.getId());
+    public void disable(Long id){
+        var stockInput = this.stockInputRepository.findById(id);
+        if (id == stockInput.get().getId()) {
+            this.stockInputRepository.disable(id);
+        }
+        else {
+            throw new RuntimeException();
+        }
+    }
+
+    @Transactional
+    public void enabled(Long id){
+        var stockInput = this.stockInputRepository.findById(id);
+        if (id == stockInput.get().getId()) {
+            this.stockInputRepository.enabled(id);
         }
         else {
             throw new RuntimeException();

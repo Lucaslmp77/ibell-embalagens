@@ -55,14 +55,25 @@ public class StockInputController {
         }
     }
 
-    @PutMapping("/active/{idStockInput}")
+    @PutMapping("/disable/{idStockInput}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idStockInput,
-            @RequestBody StockInput stockInput
+            @PathVariable Long idStockInput
     ){
         try{
-            this.stockInputService.disable(idStockInput, stockInput);
+            this.stockInputService.disable(idStockInput);
             return ResponseEntity.ok().body("Entrada de estoque desativada com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/enabled/{idStockInput}")
+    public ResponseEntity<?> enabled(
+            @PathVariable Long idStockInput
+    ){
+        try{
+            this.stockInputService.enabled(idStockInput);
+            return ResponseEntity.ok().body("Entrada de estoque ativada com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

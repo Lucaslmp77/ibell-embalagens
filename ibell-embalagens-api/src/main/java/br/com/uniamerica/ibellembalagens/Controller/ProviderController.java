@@ -55,14 +55,25 @@ public class ProviderController {
         }
     }
 
-    @PutMapping("/active/{idProvider}")
+    @PutMapping("/disable/{idProvider}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idProvider,
-            @RequestBody Provider provider
+            @PathVariable Long idProvider
     ){
         try{
-            this.providerService.disable(idProvider, provider);
+            this.providerService.disable(idProvider);
             return ResponseEntity.ok().body("Fornecedor desativado com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/enabled/{idProvider}")
+    public ResponseEntity<?> enabled(
+            @PathVariable Long idProvider
+    ){
+        try{
+            this.providerService.enabled(idProvider);
+            return ResponseEntity.ok().body("Fornecedor ativado com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

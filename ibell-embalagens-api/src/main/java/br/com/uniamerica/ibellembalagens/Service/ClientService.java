@@ -37,9 +37,21 @@ public class ClientService {
     }
 
     @Transactional
-    public void disable(Long id, Client client){
-        if (id == client.getId()) {
-            this.clientRepository.disable(client.getId());
+    public void disable(Long id){
+        var client = this.clientRepository.findById(id);
+        if (id == client.get().getId()) {
+            this.clientRepository.disable(id);
+        }
+        else {
+            throw new RuntimeException();
+        }
+    }
+
+    @Transactional
+    public void enabled(Long id){
+        var client = this.clientRepository.findById(id);
+        if (id == client.get().getId()) {
+            this.clientRepository.enabled(id);
         }
         else {
             throw new RuntimeException();

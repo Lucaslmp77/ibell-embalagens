@@ -55,14 +55,25 @@ public class AdministratorController {
         }
     }
 
-    @PutMapping("/active/{idAdm}")
+    @PutMapping("/disable/{idAdm}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idAdm,
-            @RequestBody Administrator administrator
+            @PathVariable Long idAdm
     ){
         try{
-            this.administratorService.disable(idAdm, administrator);
+            this.administratorService.disable(idAdm);
             return ResponseEntity.ok().body("Administrador desativado com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/enabled/{idAdm}")
+    public ResponseEntity<?> enabled(
+            @PathVariable Long idAdm
+    ){
+        try{
+            this.administratorService.enabled(idAdm);
+            return ResponseEntity.ok().body("Administrador ativado com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

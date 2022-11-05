@@ -14,4 +14,8 @@ public interface ProviderRepository extends JpaRepository<Provider, Long> {
     @Query("UPDATE Provider provider SET provider.active = false WHERE provider.id = :id")
     public void disable(@Param("id") Long id);
 
+    @Modifying
+    @Query("UPDATE Provider provider SET provider.active = true WHERE provider.id = :id")
+    public void enabled(@Param("id") Long id);
+
 }

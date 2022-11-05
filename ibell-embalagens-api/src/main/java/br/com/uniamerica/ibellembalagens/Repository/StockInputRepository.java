@@ -16,6 +16,10 @@ public interface StockInputRepository extends JpaRepository<StockInput, Long> {
     @Query("UPDATE StockInput stockInput SET stockInput.active = false WHERE stockInput.id = :id")
     public void disable(@Param("id") Long id);
 
+    @Modifying
+    @Query("UPDATE StockInput stockInput SET stockInput.active = true WHERE stockInput.id = :id")
+    public void enabled(@Param("id") Long id);
+
     @Query("FROM StockInput stockInput WHERE stockInput.product.id = :idProduct")
     public List<StockInput> findByProductInStockInput(@Param("idProduct") Long idProduct);
 

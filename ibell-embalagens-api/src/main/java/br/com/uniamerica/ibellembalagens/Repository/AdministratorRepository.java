@@ -14,4 +14,8 @@ public interface AdministratorRepository extends JpaRepository<Administrator, Lo
     @Query("UPDATE Administrator adm SET adm.active = false WHERE adm.id = :id")
     public void disable(@Param("id") Long id);
 
+    @Modifying
+    @Query("UPDATE Administrator adm SET adm.active = true WHERE adm.id = :id")
+    public void enabled(@Param("id") Long id);
+
 }
