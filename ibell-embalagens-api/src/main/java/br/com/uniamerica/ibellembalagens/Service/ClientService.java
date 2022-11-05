@@ -16,7 +16,6 @@ public class ClientService {
 
     @Transactional
     public Client save(Client client) {
-        System.out.println("print save service" + client);
         return this.clientRepository.save(client);
     }
 
