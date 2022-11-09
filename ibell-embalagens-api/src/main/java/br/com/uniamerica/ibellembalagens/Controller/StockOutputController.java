@@ -44,7 +44,7 @@ public class StockOutputController {
 
     @PutMapping("/{idStockOutput}")
     public ResponseEntity<?> update(
-            @PathVariable Long idStockOutput,
+            @PathVariable("idStockOutput") Long idStockOutput,
             @RequestBody StockOutput stockOutput
     ){
         try{
@@ -57,7 +57,7 @@ public class StockOutputController {
 
     @PutMapping("/disable/{idStockOutput}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idStockOutput
+            @PathVariable("idStockOutput") Long idStockOutput
     ){
         try{
             this.stockOutputService.disable(idStockOutput);
@@ -69,7 +69,7 @@ public class StockOutputController {
 
     @PutMapping("/enabled/{idStockOutput}")
     public ResponseEntity<?> enabled(
-            @PathVariable Long idStockOutput
+            @PathVariable("idStockOutput") Long idStockOutput
     ){
         try{
             this.stockOutputService.enabled(idStockOutput);

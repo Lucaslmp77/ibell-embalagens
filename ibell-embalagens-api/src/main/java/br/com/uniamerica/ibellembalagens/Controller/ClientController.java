@@ -44,7 +44,7 @@ public class ClientController {
 
     @PutMapping("/{idClient}")
     public ResponseEntity<?> update(
-            @PathVariable Long idClient,
+            @PathVariable("idClient") Long idClient,
             @RequestBody Client client
     ){
         try{
@@ -57,7 +57,7 @@ public class ClientController {
 
     @PutMapping("/disable/{idClient}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idClient
+            @PathVariable("idClient") Long idClient
     ){
         try{
             this.clientService.disable(idClient);
@@ -69,7 +69,7 @@ public class ClientController {
 
     @PutMapping("/enabled/{idClient}")
     public ResponseEntity<?> enabled(
-            @PathVariable Long idClient
+            @PathVariable("idClient") Long idClient
     ){
         try{
             this.clientService.enabled(idClient);

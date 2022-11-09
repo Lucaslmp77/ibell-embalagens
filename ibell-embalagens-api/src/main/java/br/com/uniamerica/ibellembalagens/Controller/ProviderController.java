@@ -44,7 +44,7 @@ public class ProviderController {
 
     @PutMapping("/{idProvider}")
     public ResponseEntity<?> update(
-            @PathVariable Long idProvider,
+            @PathVariable("idProvider") Long idProvider,
             @RequestBody Provider provider
     ){
         try{
@@ -57,7 +57,7 @@ public class ProviderController {
 
     @PutMapping("/disable/{idProvider}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idProvider
+            @PathVariable("idProvider") Long idProvider
     ){
         try{
             this.providerService.disable(idProvider);
@@ -69,7 +69,7 @@ public class ProviderController {
 
     @PutMapping("/enabled/{idProvider}")
     public ResponseEntity<?> enabled(
-            @PathVariable Long idProvider
+            @PathVariable("idProvider") Long idProvider
     ){
         try{
             this.providerService.enabled(idProvider);

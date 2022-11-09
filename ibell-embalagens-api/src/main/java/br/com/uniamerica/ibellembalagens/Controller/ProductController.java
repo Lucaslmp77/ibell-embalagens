@@ -44,7 +44,7 @@ public class ProductController {
 
     @PutMapping("/{idProduct}")
     public ResponseEntity<?> update(
-            @PathVariable Long idProduct,
+            @PathVariable("idProduct") Long idProduct,
             @RequestBody Product product
     ){
         try{
@@ -57,7 +57,7 @@ public class ProductController {
 
     @PutMapping("/disable/{idProduct}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idProduct
+            @PathVariable("idProduct") Long idProduct
     ){
         try{
             this.productService.disable(idProduct);
@@ -69,7 +69,7 @@ public class ProductController {
 
     @PutMapping("/enabled/{idProduct}")
     public ResponseEntity<?> enabled(
-            @PathVariable Long idProduct
+            @PathVariable("idProduct") Long idProduct
     ){
         try{
             this.productService.enabled(idProduct);

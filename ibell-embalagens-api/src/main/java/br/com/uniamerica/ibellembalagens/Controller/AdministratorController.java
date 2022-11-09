@@ -37,14 +37,14 @@ public class AdministratorController {
 
     @GetMapping("/{idAdm}")
     public ResponseEntity<Administrator> findById(
-            @PathVariable("idAdm") Long idCaminhao
+            @PathVariable("idAdm") Long idAdm
     ){
-        return ResponseEntity.ok().body(this.administratorService.findById(idCaminhao));
+        return ResponseEntity.ok().body(this.administratorService.findById(idAdm));
     }
 
     @PutMapping("/{idAdm}")
     public ResponseEntity<?> update(
-            @PathVariable Long idAdm,
+            @PathVariable("idAdm") Long idAdm,
             @RequestBody Administrator administrator
     ){
         try{
@@ -57,7 +57,7 @@ public class AdministratorController {
 
     @PutMapping("/disable/{idAdm}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idAdm
+            @PathVariable("idAdm") Long idAdm
     ){
         try{
             this.administratorService.disable(idAdm);
@@ -69,7 +69,7 @@ public class AdministratorController {
 
     @PutMapping("/enabled/{idAdm}")
     public ResponseEntity<?> enabled(
-            @PathVariable Long idAdm
+            @PathVariable("idAdm") Long idAdm
     ){
         try{
             this.administratorService.enabled(idAdm);
