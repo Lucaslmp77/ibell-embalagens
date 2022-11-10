@@ -28,14 +28,6 @@ public class Product extends AbstractEntity {
     private UnitMeasure unitMeasure;
 
     @Getter @Setter
-    @Column(name = "cost_value", nullable = false)
-    private BigDecimal costValue;
-
-    @Getter @Setter
-    @Column(name = "sale_value", nullable = false)
-    private BigDecimal saleValue;
-
-    @Getter @Setter
     @JoinColumn(name = "id_provider", nullable = false)
     @ManyToOne
     private Provider provider;

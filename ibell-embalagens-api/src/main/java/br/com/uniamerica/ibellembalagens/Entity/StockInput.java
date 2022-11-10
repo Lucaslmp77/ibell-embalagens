@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_stock_input", schema = "ibell")
@@ -18,6 +20,18 @@ public class StockInput extends AbstractEntity {
     @JoinColumn(name = "id_provider", nullable = false)
     @ManyToOne
     private Provider provider;
+
+    @Getter @Setter
+    @Column(name = "cost_value", nullable = false)
+    private BigDecimal costValue;
+
+    @Getter @Setter
+    @Column(name = "quantidade_entrada", length = 25, nullable = false)
+    private BigDecimal inputQuantity;
+
+    @Getter @Setter
+    @Column(name = "data_entrada", length = 25, nullable = false)
+    private LocalDateTime dateEntry;
 
     @Getter@Setter
     @Column(name = "observation", length = 255, nullable = true)
