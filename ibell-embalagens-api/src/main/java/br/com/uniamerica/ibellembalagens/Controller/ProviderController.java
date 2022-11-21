@@ -79,4 +79,16 @@ public class ProviderController {
         }
     }
 
+
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveProviders() {
+        return ResponseEntity.ok().body(this.providerService.findByActiveProviders());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveProviders() {
+        return ResponseEntity.ok().body(this.providerService.findByInactiveProviders());
+    }
+
 }

@@ -79,4 +79,15 @@ public class AdministratorController {
         }
     }
 
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveAdm() {
+        return ResponseEntity.ok().body(this.administratorService.findByActiveAdm());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveAdm() {
+        return ResponseEntity.ok().body(this.administratorService.findByInactiveAdm());
+    }
+
 }

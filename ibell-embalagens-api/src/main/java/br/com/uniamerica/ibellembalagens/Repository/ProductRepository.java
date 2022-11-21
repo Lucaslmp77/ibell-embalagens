@@ -1,11 +1,14 @@
 package br.com.uniamerica.ibellembalagens.Repository;
 
+import br.com.uniamerica.ibellembalagens.Entity.Client;
 import br.com.uniamerica.ibellembalagens.Entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -17,5 +20,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Modifying
     @Query("UPDATE Product product SET product.active = true WHERE product.id = :id")
     public void enabled(@Param("id") Long id);
+
+    @Query("SELECT product FROM Product product WHERE product.active = true")
+    public List<Product> findByActiveProducts();
+
+    @Query("SELECT product FROM Product product WHERE product.active = false")
+    public List<Product> findByInactiveProducts();
 
 }

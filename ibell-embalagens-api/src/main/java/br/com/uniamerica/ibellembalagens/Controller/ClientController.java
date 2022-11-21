@@ -79,4 +79,16 @@ public class ClientController {
         }
     }
 
+
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveClients() {
+        return ResponseEntity.ok().body(this.clientService.findByActiveClients());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveClients() {
+        return ResponseEntity.ok().body(this.clientService.findByInactiveClients());
+    }
+
 }

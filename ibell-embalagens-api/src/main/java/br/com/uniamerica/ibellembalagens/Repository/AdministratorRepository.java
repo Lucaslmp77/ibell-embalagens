@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface AdministratorRepository extends JpaRepository<Administrator, Long> {
 
@@ -17,5 +20,11 @@ public interface AdministratorRepository extends JpaRepository<Administrator, Lo
     @Modifying
     @Query("UPDATE Administrator adm SET adm.active = true WHERE adm.id = :id")
     public void enabled(@Param("id") Long id);
+
+    @Query("SELECT adm FROM Administrator adm WHERE adm.active = true")
+    public List<Administrator> findByActiveAdm();
+
+    @Query("SELECT adm FROM Administrator adm WHERE adm.active = false")
+    public List<Administrator> findByInactiveAdm();
 
 }

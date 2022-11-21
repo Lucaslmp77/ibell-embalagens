@@ -1,5 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Service;
 
+import br.com.uniamerica.ibellembalagens.Entity.Administrator;
 import br.com.uniamerica.ibellembalagens.Entity.Client;
 import br.com.uniamerica.ibellembalagens.Repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,15 @@ public class ClientService {
         else {
             throw new RuntimeException();
         }
+    }
+
+
+    public List<Client> findByActiveClients() {
+        return this.clientRepository.findByActiveClients();
+    }
+
+    public List<Client> findByInactiveClients() {
+        return this.clientRepository.findByInactiveClients();
     }
 
 }

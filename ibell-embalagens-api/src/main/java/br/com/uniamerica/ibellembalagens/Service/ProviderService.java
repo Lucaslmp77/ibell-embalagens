@@ -1,5 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Service;
 
+import br.com.uniamerica.ibellembalagens.Entity.Product;
 import br.com.uniamerica.ibellembalagens.Entity.Provider;
 import br.com.uniamerica.ibellembalagens.Repository.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,15 @@ public class ProviderService {
         else {
             throw new RuntimeException();
         }
+    }
+
+
+    public List<Provider> findByActiveProviders() {
+        return this.providerRepository.findByActiveProviders();
+    }
+
+    public List<Provider> findByInactiveProviders() {
+        return this.providerRepository.findByInactiveProviders();
     }
 
 }

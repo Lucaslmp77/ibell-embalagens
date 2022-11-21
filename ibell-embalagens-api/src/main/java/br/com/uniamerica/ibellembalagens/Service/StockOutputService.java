@@ -1,5 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Service;
 
+import br.com.uniamerica.ibellembalagens.Entity.StockInput;
 import br.com.uniamerica.ibellembalagens.Entity.StockOutput;
 import br.com.uniamerica.ibellembalagens.Repository.StockOutputRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,15 @@ public class StockOutputService {
 
     public List<StockOutput> findByClientInStockOutput(Long id) {
         return this.stockOutputRepository.findByClientInStockOutput(id);
+    }
+
+
+    public List<StockOutput> findByActiveStockOutputs() {
+        return this.stockOutputRepository.findByActiveStockOutputs();
+    }
+
+    public List<StockOutput> findByInactiveStockOutputs() {
+        return this.stockOutputRepository.findByInactiveStockOutputs();
     }
 
 }

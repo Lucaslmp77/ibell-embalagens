@@ -1,5 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Repository;
 
+import br.com.uniamerica.ibellembalagens.Entity.Provider;
 import br.com.uniamerica.ibellembalagens.Entity.StockOutput;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -22,5 +23,12 @@ public interface StockOutputRepository extends JpaRepository<StockOutput, Long> 
 
     @Query("FROM StockOutput stockOutput WHERE stockOutput.client.id = :idClient")
     public List<StockOutput> findByClientInStockOutput(@Param("idClient") Long idClient);
+
+
+    @Query("SELECT stockOutput FROM StockOutput stockOutput WHERE stockOutput.active = true")
+    public List<StockOutput> findByActiveStockOutputs();
+
+    @Query("SELECT stockOutput FROM StockOutput stockOutput WHERE stockOutput.active = false")
+    public List<StockOutput> findByInactiveStockOutputs();
 
 }

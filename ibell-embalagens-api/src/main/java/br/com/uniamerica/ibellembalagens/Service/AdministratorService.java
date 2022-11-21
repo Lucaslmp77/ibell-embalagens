@@ -58,4 +58,12 @@ public class AdministratorService {
         }
     }
 
+    public List<Administrator> findByActiveAdm() {
+        return this.administratorRepository.findByActiveAdm();
+    }
+
+    public List<Administrator> findByInactiveAdm() {
+        return this.administratorRepository.findByInactiveAdm();
+    }
+
 }

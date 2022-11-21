@@ -89,4 +89,16 @@ public class StockInputController {
         return ResponseEntity.ok().body(this.stockInputService.findByProviderInStockInput(idProvider));
     }
 
+
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveStockInputs() {
+        return ResponseEntity.ok().body(this.stockInputService.findByActiveStockInputs());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveStockInputs() {
+        return ResponseEntity.ok().body(this.stockInputService.findByInactiveStockInputs());
+    }
+
 }
