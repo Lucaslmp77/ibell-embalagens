@@ -23,14 +23,14 @@ public class StockOutput extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "quantidade_saida", length = 25, nullable = false)
-    private BigDecimal quantidadeSaida;
+    private BigDecimal quantityOutput;
 
     @Getter @Setter
-    @Column(name = "preco_saida", length = 25, nullable = false)
-    private BigDecimal precoSaida;
+    @Column(name = "valor_venda", length = 25, nullable = false)
+    private BigDecimal saleValue;
 
     @Getter @Setter
-    @Column(name = "departure_date", length = 25, nullable = false)
+    @Column(name = "data_saida", length = 25, nullable = false)
     private LocalDateTime departureDate;
 
     @Getter @Setter

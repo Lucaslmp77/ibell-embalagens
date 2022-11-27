@@ -37,13 +37,34 @@ public class ProviderService {
     }
 
     @Transactional
-    public void disable(Long id, Provider provider){
-        if (id == provider.getId()) {
-            this.providerRepository.disable(provider.getId());
+    public void disable(Long id){
+        var provider = this.providerRepository.findById(id);
+        if (id == provider.get().getId()) {
+            this.providerRepository.disable(id);
         }
         else {
             throw new RuntimeException();
         }
+    }
+
+    @Transactional
+    public void enabled(Long id){
+        var provider = this.providerRepository.findById(id);
+        if (id == provider.get().getId()) {
+            this.providerRepository.enabled(id);
+        }
+        else {
+            throw new RuntimeException();
+        }
+    }
+
+
+    public List<Provider> findByActiveProviders() {
+        return this.providerRepository.findByActiveProviders();
+    }
+
+    public List<Provider> findByInactiveProviders() {
+        return this.providerRepository.findByInactiveProviders();
     }
 
 }

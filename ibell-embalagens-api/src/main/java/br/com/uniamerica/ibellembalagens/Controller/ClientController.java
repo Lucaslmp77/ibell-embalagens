@@ -44,7 +44,7 @@ public class ClientController {
 
     @PutMapping("/{idClient}")
     public ResponseEntity<?> update(
-            @PathVariable Long idClient,
+            @PathVariable("idClient") Long idClient,
             @RequestBody Client client
     ){
         try{
@@ -55,17 +55,40 @@ public class ClientController {
         }
     }
 
-    @PutMapping("/active/{idClient}")
+    @PutMapping("/disable/{idClient}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idClient,
-            @RequestBody Client client
+            @PathVariable("idClient") Long idClient
     ){
         try{
-            this.clientService.disable(idClient, client);
+            this.clientService.disable(idClient);
             return ResponseEntity.ok().body("Cliente desativado com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @PutMapping("/enabled/{idClient}")
+    public ResponseEntity<?> enabled(
+            @PathVariable("idClient") Long idClient
+    ){
+        try{
+            this.clientService.enabled(idClient);
+            return ResponseEntity.ok().body("Cliente ativado com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveClients() {
+        return ResponseEntity.ok().body(this.clientService.findByActiveClients());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveClients() {
+        return ResponseEntity.ok().body(this.clientService.findByInactiveClients());
     }
 
 }

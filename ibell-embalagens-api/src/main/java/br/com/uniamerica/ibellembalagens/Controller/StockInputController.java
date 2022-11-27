@@ -44,7 +44,7 @@ public class StockInputController {
 
     @PutMapping("/{idStockInput}")
     public ResponseEntity<?> update(
-            @PathVariable Long idStockInput,
+            @PathVariable("idStockInput") Long idStockInput,
             @RequestBody StockInput stockInput
     ){
         try{
@@ -55,14 +55,25 @@ public class StockInputController {
         }
     }
 
-    @PutMapping("/active/{idStockInput}")
+    @PutMapping("/disable/{idStockInput}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idStockInput,
-            @RequestBody StockInput stockInput
+            @PathVariable("idStockInput") Long idStockInput
     ){
         try{
-            this.stockInputService.disable(idStockInput, stockInput);
+            this.stockInputService.disable(idStockInput);
             return ResponseEntity.ok().body("Entrada de estoque desativada com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/enabled/{idStockInput}")
+    public ResponseEntity<?> enabled(
+            @PathVariable("idStockInput") Long idStockInput
+    ){
+        try{
+            this.stockInputService.enabled(idStockInput);
+            return ResponseEntity.ok().body("Entrada de estoque ativada com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -76,6 +87,18 @@ public class StockInputController {
     @GetMapping("/provider/{idProvider}")
     public ResponseEntity<?> findByProviderInStockInput(@PathVariable("idProvider") Long idProvider) {
         return ResponseEntity.ok().body(this.stockInputService.findByProviderInStockInput(idProvider));
+    }
+
+
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveStockInputs() {
+        return ResponseEntity.ok().body(this.stockInputService.findByActiveStockInputs());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveStockInputs() {
+        return ResponseEntity.ok().body(this.stockInputService.findByInactiveStockInputs());
     }
 
 }

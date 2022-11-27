@@ -37,9 +37,21 @@ public class StockOutputService {
     }
 
     @Transactional
-    public void disable(Long id, StockOutput stockOutput){
-        if (id == stockOutput.getId()) {
-            this.stockOutputRepository.disable(stockOutput.getId());
+    public void disable(Long id){
+        var stockOutput = this.stockOutputRepository.findById(id);
+        if (id == stockOutput.get().getId()) {
+            this.stockOutputRepository.disable(id);
+        }
+        else {
+            throw new RuntimeException();
+        }
+    }
+
+    @Transactional
+    public void enabled(Long id){
+        var stockOutput = this.stockOutputRepository.findById(id);
+        if (id == stockOutput.get().getId()) {
+            this.stockOutputRepository.enabled(id);
         }
         else {
             throw new RuntimeException();
@@ -48,6 +60,15 @@ public class StockOutputService {
 
     public List<StockOutput> findByClientInStockOutput(Long id) {
         return this.stockOutputRepository.findByClientInStockOutput(id);
+    }
+
+
+    public List<StockOutput> findByActiveStockOutputs() {
+        return this.stockOutputRepository.findByActiveStockOutputs();
+    }
+
+    public List<StockOutput> findByInactiveStockOutputs() {
+        return this.stockOutputRepository.findByInactiveStockOutputs();
     }
 
 }

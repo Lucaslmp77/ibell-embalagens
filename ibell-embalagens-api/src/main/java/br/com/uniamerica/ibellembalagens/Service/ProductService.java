@@ -37,13 +37,34 @@ public class ProductService {
     }
 
     @Transactional
-    public void disable(Long id, Product product){
-        if (id == product.getId()) {
-            this.productRepository.disable(product.getId());
+    public void disable(Long id){
+        var product = this.productRepository.findById(id);
+        if (id == product.get().getId()) {
+            this.productRepository.disable(id);
         }
         else {
             throw new RuntimeException();
         }
+    }
+
+    @Transactional
+    public void enabled(Long id){
+        var product = this.productRepository.findById(id);
+        if (id == product.get().getId()) {
+            this.productRepository.enabled(id);
+        }
+        else {
+            throw new RuntimeException();
+        }
+    }
+
+
+    public List<Product> findByActiveProducts() {
+        return this.productRepository.findByActiveProducts();
+    }
+
+    public List<Product> findByInactiveProducts() {
+        return this.productRepository.findByInactiveProducts();
     }
 
 }

@@ -44,7 +44,7 @@ public class ProductController {
 
     @PutMapping("/{idProduct}")
     public ResponseEntity<?> update(
-            @PathVariable Long idProduct,
+            @PathVariable("idProduct") Long idProduct,
             @RequestBody Product product
     ){
         try{
@@ -55,17 +55,40 @@ public class ProductController {
         }
     }
 
-    @PutMapping("/active/{idProduct}")
+    @PutMapping("/disable/{idProduct}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idProduct,
-            @RequestBody Product product
+            @PathVariable("idProduct") Long idProduct
     ){
         try{
-            this.productService.disable(idProduct, product);
+            this.productService.disable(idProduct);
             return ResponseEntity.ok().body("Produto desativado com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @PutMapping("/enabled/{idProduct}")
+    public ResponseEntity<?> enabled(
+            @PathVariable("idProduct") Long idProduct
+    ){
+        try{
+            this.productService.enabled(idProduct);
+            return ResponseEntity.ok().body("Produto ativado com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveProducts() {
+        return ResponseEntity.ok().body(this.productService.findByActiveProducts());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveProducts() {
+        return ResponseEntity.ok().body(this.productService.findByInactiveProducts());
     }
 
 }

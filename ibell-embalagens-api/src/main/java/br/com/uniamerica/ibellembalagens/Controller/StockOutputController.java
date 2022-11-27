@@ -44,7 +44,7 @@ public class StockOutputController {
 
     @PutMapping("/{idStockOutput}")
     public ResponseEntity<?> update(
-            @PathVariable Long idStockOutput,
+            @PathVariable("idStockOutput") Long idStockOutput,
             @RequestBody StockOutput stockOutput
     ){
         try{
@@ -55,22 +55,45 @@ public class StockOutputController {
         }
     }
 
-    @PutMapping("/active/{idStockOutput}")
+    @PutMapping("/disable/{idStockOutput}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idStockOutput,
-            @RequestBody StockOutput stockOutput
+            @PathVariable("idStockOutput") Long idStockOutput
     ){
         try{
-            this.stockOutputService.disable(idStockOutput, stockOutput);
+            this.stockOutputService.disable(idStockOutput);
             return ResponseEntity.ok().body("Saida de estoque desativada com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
-    @GetMapping("/client/{idClient}")
+    @PutMapping("/enabled/{idStockOutput}")
+    public ResponseEntity<?> enabled(
+            @PathVariable("idStockOutput") Long idStockOutput
+    ){
+        try{
+            this.stockOutputService.enabled(idStockOutput);
+            return ResponseEntity.ok().body("Saida de estoque ativada com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/stockOutput/{idClient}")
     public ResponseEntity<?> findByClientInStockOutput(@PathVariable("idClient") Long idClient) {
         return ResponseEntity.ok().body(this.stockOutputService.findByClientInStockOutput(idClient));
+    }
+
+
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveStockOutputs() {
+        return ResponseEntity.ok().body(this.stockOutputService.findByActiveStockOutputs());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveStockOutputs() {
+        return ResponseEntity.ok().body(this.stockOutputService.findByInactiveStockOutputs());
     }
 
 }

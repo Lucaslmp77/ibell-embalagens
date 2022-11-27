@@ -37,13 +37,33 @@ public class AdministratorService {
     }
 
     @Transactional
-    public void disable(Long id, Administrator administrator){
-        if (id == administrator.getId()) {
-            this.administratorRepository.disable(administrator.getId());
+    public void disable(Long id){
+        var adm = this.administratorRepository.findById(id);
+        if (id == adm.get().getId()) {
+            this.administratorRepository.disable(id);
         }
         else {
             throw new RuntimeException();
         }
+    }
+
+    @Transactional
+    public void enabled(Long id){
+        var adm = this.administratorRepository.findById(id);
+        if (id == adm.get().getId()) {
+            this.administratorRepository.enabled(id);
+        }
+        else {
+            throw new RuntimeException();
+        }
+    }
+
+    public List<Administrator> findByActiveAdm() {
+        return this.administratorRepository.findByActiveAdm();
+    }
+
+    public List<Administrator> findByInactiveAdm() {
+        return this.administratorRepository.findByInactiveAdm();
     }
 
 }

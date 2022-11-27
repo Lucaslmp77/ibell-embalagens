@@ -37,14 +37,14 @@ public class AdministratorController {
 
     @GetMapping("/{idAdm}")
     public ResponseEntity<Administrator> findById(
-            @PathVariable("idAdm") Long idCaminhao
+            @PathVariable("idAdm") Long idAdm
     ){
-        return ResponseEntity.ok().body(this.administratorService.findById(idCaminhao));
+        return ResponseEntity.ok().body(this.administratorService.findById(idAdm));
     }
 
     @PutMapping("/{idAdm}")
     public ResponseEntity<?> update(
-            @PathVariable Long idAdm,
+            @PathVariable("idAdm") Long idAdm,
             @RequestBody Administrator administrator
     ){
         try{
@@ -55,17 +55,39 @@ public class AdministratorController {
         }
     }
 
-    @PutMapping("/active/{idAdm}")
+    @PutMapping("/disable/{idAdm}")
     public ResponseEntity<?> disable(
-            @PathVariable Long idAdm,
-            @RequestBody Administrator administrator
+            @PathVariable("idAdm") Long idAdm
     ){
         try{
-            this.administratorService.disable(idAdm, administrator);
+            this.administratorService.disable(idAdm);
             return ResponseEntity.ok().body("Administrador desativado com sucesso!");
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @PutMapping("/enabled/{idAdm}")
+    public ResponseEntity<?> enabled(
+            @PathVariable("idAdm") Long idAdm
+    ){
+        try{
+            this.administratorService.enabled(idAdm);
+            return ResponseEntity.ok().body("Administrador ativado com sucesso!");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/actives")
+    public ResponseEntity<?> findByActiveAdm() {
+        return ResponseEntity.ok().body(this.administratorService.findByActiveAdm());
+    }
+
+
+    @GetMapping("/inactives")
+    public ResponseEntity<?> findByInactiveAdm() {
+        return ResponseEntity.ok().body(this.administratorService.findByInactiveAdm());
     }
 
 }

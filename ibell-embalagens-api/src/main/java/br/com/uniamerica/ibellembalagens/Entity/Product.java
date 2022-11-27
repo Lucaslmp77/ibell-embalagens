@@ -23,17 +23,17 @@ public class Product extends AbstractEntity {
     private BigDecimal quantity;
 
     @Getter @Setter
+    @Column(name = "unit_value", length = 10, nullable = true)
+    private BigDecimal unitValue;
+
+    @Getter @Setter
+    @Column(name = "profit_percentage", length = 10, nullable = false)
+    private BigDecimal profitPercentage;
+
+    @Getter @Setter
     @Column(name = "unit_measure", length = 25, nullable = false)
     @Enumerated(EnumType.STRING)
     private UnitMeasure unitMeasure;
-
-    @Getter @Setter
-    @Column(name = "cost_value", nullable = false)
-    private BigDecimal costValue;
-
-    @Getter @Setter
-    @Column(name = "sale_value", nullable = false)
-    private BigDecimal saleValue;
 
     @Getter @Setter
     @JoinColumn(name = "id_provider", nullable = false)
