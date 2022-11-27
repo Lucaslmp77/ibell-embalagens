@@ -1,6 +1,5 @@
 package br.com.uniamerica.ibellembalagens.Service;
 
-import br.com.uniamerica.ibellembalagens.Entity.Client;
 import br.com.uniamerica.ibellembalagens.Entity.Product;
 import br.com.uniamerica.ibellembalagens.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

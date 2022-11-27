@@ -1,6 +1,5 @@
 package br.com.uniamerica.ibellembalagens.Repository;
 
-import br.com.uniamerica.ibellembalagens.Entity.Provider;
 import br.com.uniamerica.ibellembalagens.Entity.StockOutput;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

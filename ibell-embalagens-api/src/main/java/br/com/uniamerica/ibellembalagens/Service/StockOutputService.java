@@ -1,6 +1,5 @@
 package br.com.uniamerica.ibellembalagens.Service;
 
-import br.com.uniamerica.ibellembalagens.Entity.StockInput;
 import br.com.uniamerica.ibellembalagens.Entity.StockOutput;
 import br.com.uniamerica.ibellembalagens.Repository.StockOutputRepository;
 import org.springframework.beans.factory.annotation.Autowired;

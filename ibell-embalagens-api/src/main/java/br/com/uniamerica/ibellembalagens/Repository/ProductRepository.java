@@ -1,6 +1,5 @@
 package br.com.uniamerica.ibellembalagens.Repository;
 
-import br.com.uniamerica.ibellembalagens.Entity.Client;
 import br.com.uniamerica.ibellembalagens.Entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
