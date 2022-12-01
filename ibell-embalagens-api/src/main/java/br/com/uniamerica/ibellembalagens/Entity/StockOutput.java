@@ -23,7 +23,7 @@ public class StockOutput extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "quantidade_saida", length = 25, nullable = false)
-    private BigDecimal quantityOutput;
+    private Float quantityOutput;
 
     @Getter @Setter
     @Column(name = "valor_venda", length = 25, nullable = false)

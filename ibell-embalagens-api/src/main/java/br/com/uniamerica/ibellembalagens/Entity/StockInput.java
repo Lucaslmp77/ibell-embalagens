@@ -27,7 +27,7 @@ public class StockInput extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "quantidade_entrada", length = 25, nullable = false)
-    private BigDecimal inputQuantity;
+    private Float inputQuantity;
 
     @Getter @Setter
     @Column(name = "data_entrada", length = 25, nullable = false)

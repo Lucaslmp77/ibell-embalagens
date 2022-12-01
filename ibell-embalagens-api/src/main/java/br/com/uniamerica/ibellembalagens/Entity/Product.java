@@ -20,7 +20,7 @@ public class Product extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "quantity", length = 10, nullable = false)
-    private BigDecimal quantity;
+    private Float quantity;
 
     @Getter @Setter
     @Column(name = "unit_value", length = 10, nullable = true)

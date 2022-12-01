@@ -1,6 +1,7 @@
 package br.com.uniamerica.ibellembalagens.Service;
 
 import br.com.uniamerica.ibellembalagens.Entity.StockInput;
+import br.com.uniamerica.ibellembalagens.Repository.ProductRepository;
 import br.com.uniamerica.ibellembalagens.Repository.StockInputRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,18 @@ public class StockInputService {
     @Autowired
     private StockInputRepository stockInputRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
     @Transactional
     public StockInput save(StockInput stockInput) {
+        var product = this.productRepository.findById(stockInput.getProduct().getId()).get();
+        var quantity = this.productRepository.getQuantityByIdProduct(stockInput.getProduct().getId());
+        float quantityInput = stockInput.getInputQuantity();
+        System.out.println(quantityInput);
+        quantity += quantityInput;
+        product.setQuantity(quantity);
+        this.productRepository.save(product);
         return this.stockInputRepository.save(stockInput);
     }
 

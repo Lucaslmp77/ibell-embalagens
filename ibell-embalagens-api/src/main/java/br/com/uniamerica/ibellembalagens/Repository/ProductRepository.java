@@ -26,4 +26,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("SELECT product FROM Product product WHERE product.active = false")
     public List<Product> findByInactiveProducts();
 
+    @Query("SELECT product.quantity FROM Product product WHERE product.id = :id")
+    public Float getQuantityByIdProduct(Long id);
+
 }
