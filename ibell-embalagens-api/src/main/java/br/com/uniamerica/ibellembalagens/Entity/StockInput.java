@@ -26,11 +26,11 @@ public class StockInput extends AbstractEntity {
     private BigDecimal costValue;
 
     @Getter @Setter
-    @Column(name = "quantidade_entrada", length = 25, nullable = false)
+    @Column(name = "input_quantity", length = 25, nullable = false)
     private Float inputQuantity;
 
     @Getter @Setter
-    @Column(name = "data_entrada", length = 25, nullable = false)
+    @Column(name = "date_entry", length = 25, nullable = false)
     private LocalDateTime dateEntry;
 
     @Getter@Setter

@@ -2,8 +2,10 @@ package br.com.uniamerica.ibellembalagens.Entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Entity
 @Table(name = "tb_client", schema = "ibell")
@@ -14,8 +16,8 @@ public class Client extends AbstractEntity {
     private String name;
 
     @Getter @Setter
-    @Column(name = "cpf", length = 18, nullable = false, unique = true)
-    private String cpf;
+    @Column(name = "cnpj_cpf", length = 18, nullable = false, unique = true)
+    private String cnpjCpf;
 
     @Getter @Setter
     @Column(name = "phone_number", length = 14, nullable = false)
@@ -26,6 +28,7 @@ public class Client extends AbstractEntity {
     private String address;
 
     @Getter@Setter
+    @Email
     @Column(name = "email", length = 40, nullable = false)
     private String email;
 
