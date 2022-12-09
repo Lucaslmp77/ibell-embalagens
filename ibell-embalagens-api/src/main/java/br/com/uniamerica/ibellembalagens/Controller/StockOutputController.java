@@ -79,11 +79,15 @@ public class StockOutputController {
         }
     }
 
-    @GetMapping("/stockOutput/{idClient}")
+    @GetMapping("/product/{idProduct}")
+    public ResponseEntity<?> findByProductInStockOutput(@PathVariable("idProduct") Long idProduct) {
+        return ResponseEntity.ok().body(this.stockOutputService.findByProductInStockOutput(idProduct));
+    }
+
+    @GetMapping("/client/{idClient}")
     public ResponseEntity<?> findByClientInStockOutput(@PathVariable("idClient") Long idClient) {
         return ResponseEntity.ok().body(this.stockOutputService.findByClientInStockOutput(idClient));
     }
-
 
     @GetMapping("/actives")
     public ResponseEntity<?> findByActiveStockOutputs() {

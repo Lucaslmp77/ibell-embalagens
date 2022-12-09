@@ -4,6 +4,7 @@ import br.com.uniamerica.ibellembalagens.Entity.StockInput;
 import br.com.uniamerica.ibellembalagens.Entity.StockOutput;
 import br.com.uniamerica.ibellembalagens.Repository.ProductRepository;
 import br.com.uniamerica.ibellembalagens.Repository.StockOutputRepository;
+import org.aspectj.bridge.IMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +26,14 @@ public class StockOutputService {
         var quantity = this.productRepository.getQuantityByIdProduct(stockOutput.getProduct().getId());
         float outputQuantity = stockOutput.getQuantityOutput();
         System.out.println(outputQuantity);
-        quantity -= outputQuantity;
-        product.setQuantity(quantity);
-        this.productRepository.save(product);
-        return this.stockOutputRepository.save(stockOutput);
+        if (quantity > outputQuantity || quantity == outputQuantity) {
+            quantity -= outputQuantity;
+            product.setQuantity(quantity);
+            this.productRepository.save(product);
+            return this.stockOutputRepository.save(stockOutput);
+        } else {
+            throw new RuntimeException();
+        }
     }
 
     public List<StockOutput> listAll() {
@@ -68,6 +73,10 @@ public class StockOutputService {
         else {
             throw new RuntimeException();
         }
+    }
+
+    public List<StockOutput> findByProductInStockOutput(Long id) {
+        return this.stockOutputRepository.findByProductInStockOutput(id);
     }
 
     public List<StockOutput> findByClientInStockOutput(Long id) {

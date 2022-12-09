@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,7 +22,7 @@ public class StockInput extends AbstractEntity {
 
     @Getter @Setter
     @Column(name = "cost_value", nullable = false)
-    private BigDecimal costValue;
+    private Float costValue;
 
     @Getter @Setter
     @Column(name = "input_quantity", length = 25, nullable = false)
@@ -35,6 +34,6 @@ public class StockInput extends AbstractEntity {
 
     @Getter@Setter
     @Column(name = "observation", length = 255, nullable = true)
-    private String observacao;
+    private String observation;
 
 }

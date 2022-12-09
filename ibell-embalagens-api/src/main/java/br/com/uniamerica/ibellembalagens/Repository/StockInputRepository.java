@@ -33,4 +33,8 @@ public interface StockInputRepository extends JpaRepository<StockInput, Long> {
     @Query("SELECT stockInput FROM StockInput stockInput WHERE stockInput.active = false")
     public List<StockInput> findByInactiveStockInputs();
 
+//    @Query("SELECT stockInput FROM StockInput stockInput WHERE (SUM(stockInput.inputQuantity * stockInput.costValue)" +
+//            " / SUM(stockInput.inputQuantity)) AND stockInput.product.id = stockInput.id AND stockInput.active = true")
+//    public StockInput updateNewCostValue();
+
 }
