@@ -23,7 +23,6 @@ public class StockInputService {
         var product = this.productRepository.findById(stockInput.getProduct().getId()).get();
         var quantity = this.productRepository.getQuantityByIdProduct(stockInput.getProduct().getId());
         float quantityInput = stockInput.getInputQuantity();
-        System.out.println(quantityInput);
         quantity += quantityInput;
         product.setQuantity(quantity);
         this.productRepository.save(product);

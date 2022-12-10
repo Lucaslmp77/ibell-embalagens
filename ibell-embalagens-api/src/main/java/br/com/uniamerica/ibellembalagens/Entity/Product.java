@@ -27,10 +27,6 @@ public class Product extends AbstractEntity {
     private BigDecimal unitValue;
 
     @Getter @Setter
-    @Column(name = "profit_percentage", length = 10, nullable = false)
-    private BigDecimal profitPercentage;
-
-    @Getter @Setter
     @Column(name = "unit_measure", length = 25, nullable = false)
     @Enumerated(EnumType.STRING)
     private UnitMeasure unitMeasure;
@@ -43,6 +39,5 @@ public class Product extends AbstractEntity {
     @Getter @Setter
     @Column(name = "observation", length = 255, nullable = true)
     private String observation;
-
 
 }

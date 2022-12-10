@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -16,6 +17,8 @@ public class ProductService {
 
     @Transactional
     public Product save(Product product) {
+        product.setQuantity(0.0F);
+        product.setUnitValue(BigDecimal.valueOf(0));
         return this.productRepository.save(product);
     }
 
