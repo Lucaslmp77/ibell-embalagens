@@ -17,8 +17,10 @@ public class ProductService {
 
     @Transactional
     public Product save(Product product) {
-        product.setQuantity(0.0F);
-        product.setUnitValue(BigDecimal.valueOf(0));
+        if(product.getQuantity() == null) {
+            product.setQuantity(0.0F);
+            product.setUnitValue(BigDecimal.valueOf(0));
+        }
         return this.productRepository.save(product);
     }
 

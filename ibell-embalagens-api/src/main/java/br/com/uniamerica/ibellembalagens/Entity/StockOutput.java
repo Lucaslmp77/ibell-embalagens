@@ -1,5 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,6 +31,7 @@ public class StockOutput extends AbstractEntity {
     private BigDecimal saleValue;
 
     @Getter @Setter
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @Column(name = "departure_date", length = 25, nullable = false)
     private LocalDateTime departureDate;
 

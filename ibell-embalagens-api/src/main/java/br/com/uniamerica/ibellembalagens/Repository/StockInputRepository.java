@@ -34,6 +34,13 @@ public interface StockInputRepository extends JpaRepository<StockInput, Long> {
     @Query("SELECT stockInput FROM StockInput stockInput WHERE stockInput.active = false")
     public List<StockInput> findByInactiveStockInputs();
 
+//    @Query("SELECT SUM(stockInput.inputQuantity) FROM StockInput stockInput WHERE stockInput.product.id = :idProduct")
+//    public Float getSumInputQuantity(@Param("idProduct") Long idProduct);
+
+//    select (sum(input_quantity * cost_value) / sum(input_quantity)) as novo_valor
+//
+//    from ibell.tb_stock_input where stock_input.product_id = :idProduct and active = true
+
 //    @Query("SELECT stockInput FROM StockInput stockInput WHERE (SUM(stockInput.inputQuantity * stockInput.costValue)" +
 //            " / SUM(stockInput.inputQuantity)) AND stockInput.product.id = stockInput.id AND stockInput.active = true")
 //    public StockInput updateNewCostValue();

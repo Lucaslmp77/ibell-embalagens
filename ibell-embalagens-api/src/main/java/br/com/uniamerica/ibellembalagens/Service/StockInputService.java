@@ -27,6 +27,12 @@ public class StockInputService {
         product.setQuantity(quantity);
         this.productRepository.save(product);
         return this.stockInputRepository.save(stockInput);
+
+//        var product = this.productRepository.findById(stockInput.getProduct().getId()).get();
+//        var quantity = this.stockInputRepository.getSumInputQuantity(stockInput.getProduct().getId());
+//        product.setQuantity(quantity);
+//        this.productRepository.save(product);
+//        return this.stockInputRepository.save(stockInput);
     }
 
     public List<StockInput> listAll() {
