@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -28,7 +29,7 @@ public interface StockInputRepository extends JpaRepository<StockInput, Long> {
 
 
     @Query("SELECT stockInput FROM StockInput stockInput WHERE stockInput.active = true")
-    public List<StockInput> findByActiveStockInputs();
+    public ArrayList<StockInput> findByActiveStockInputs();
 
     @Query("SELECT stockInput FROM StockInput stockInput WHERE stockInput.active = false")
     public List<StockInput> findByInactiveStockInputs();
