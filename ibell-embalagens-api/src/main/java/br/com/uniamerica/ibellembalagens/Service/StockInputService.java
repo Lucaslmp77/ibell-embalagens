@@ -3,10 +3,12 @@ package br.com.uniamerica.ibellembalagens.Service;
 import br.com.uniamerica.ibellembalagens.Entity.StockInput;
 import br.com.uniamerica.ibellembalagens.Repository.ProductRepository;
 import br.com.uniamerica.ibellembalagens.Repository.StockInputRepository;
+import br.com.uniamerica.ibellembalagens.Repository.StockOutputRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -16,23 +18,43 @@ public class StockInputService {
     private StockInputRepository stockInputRepository;
 
     @Autowired
+    private StockOutputRepository stockOutputRepository;
+
+    @Autowired
     private ProductRepository productRepository;
 
     @Transactional
     public StockInput save(StockInput stockInput) {
+
+        this.stockInputRepository.save(stockInput);
+
         var product = this.productRepository.findById(stockInput.getProduct().getId()).get();
-        var quantity = this.productRepository.getQuantityByIdProduct(stockInput.getProduct().getId());
-        float quantityInput = stockInput.getInputQuantity();
-        quantity += quantityInput;
-        product.setQuantity(quantity);
-        this.productRepository.save(product);
-        return this.stockInputRepository.save(stockInput);
+
+        var sumOutput = this.stockOutputRepository.getSumOutputQuantity(stockInput.getProduct().getId());
+        var sumInput = this.stockInputRepository.getSumInputQuantity(stockInput.getProduct().getId());
+
+        if (sumOutput == null){
+            sumOutput = Float.valueOf(0);
+        }
+
+        var newQuantity = sumInput - sumOutput;
+        product.setQuantity(newQuantity);
 
 //        var product = this.productRepository.findById(stockInput.getProduct().getId()).get();
-//        var quantity = this.stockInputRepository.getSumInputQuantity(stockInput.getProduct().getId());
+//        var quantity = this.productRepository.getQuantityByIdProduct(stockInput.getProduct().getId());
+//        float quantityInput = stockInput.getInputQuantity();
+//        quantity += quantityInput;
 //        product.setQuantity(quantity);
-//        this.productRepository.save(product);
-//        return this.stockInputRepository.save(stockInput);
+
+        var value = this.stockInputRepository.updateNewCostValue(stockInput.getProduct().getId());
+        var quantity = this.productRepository.getQuantityByIdProduct(stockInput.getProduct().getId());
+        var newValueUnity = value / quantity;
+        product.setUnitValue(BigDecimal.valueOf(newValueUnity));
+
+        this.productRepository.save(product);
+
+        return this.stockInputRepository.save(stockInput);
+
     }
 
     public List<StockInput> listAll() {

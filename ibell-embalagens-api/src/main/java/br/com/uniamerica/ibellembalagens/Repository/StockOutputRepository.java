@@ -32,4 +32,7 @@ public interface StockOutputRepository extends JpaRepository<StockOutput, Long> 
     @Query("SELECT stockOutput FROM StockOutput stockOutput WHERE stockOutput.active = false")
     public List<StockOutput> findByInactiveStockOutputs();
 
+    @Query("SELECT SUM(stockOutput.quantityOutput) FROM StockOutput stockOutput WHERE stockOutput.product.id = :idProduct")
+    public Float getSumOutputQuantity(@Param("idProduct") Long idProduct);
+
 }

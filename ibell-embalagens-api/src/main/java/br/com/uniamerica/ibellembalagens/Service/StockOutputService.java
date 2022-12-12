@@ -3,8 +3,8 @@ package br.com.uniamerica.ibellembalagens.Service;
 import br.com.uniamerica.ibellembalagens.Entity.StockInput;
 import br.com.uniamerica.ibellembalagens.Entity.StockOutput;
 import br.com.uniamerica.ibellembalagens.Repository.ProductRepository;
+import br.com.uniamerica.ibellembalagens.Repository.StockInputRepository;
 import br.com.uniamerica.ibellembalagens.Repository.StockOutputRepository;
-import org.aspectj.bridge.IMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,22 +18,43 @@ public class StockOutputService {
     private StockOutputRepository stockOutputRepository;
 
     @Autowired
+    private StockInputRepository stockInputRepository;
+
+    @Autowired
     private ProductRepository productRepository;
 
     @Transactional
     public StockOutput save(StockOutput stockOutput) {
+//        var product = this.productRepository.findById(stockOutput.getProduct().getId()).get();
+//        var quantity = this.productRepository.getQuantityByIdProduct(stockOutput.getProduct().getId());
+//        float outputQuantity = stockOutput.getQuantityOutput();
+//        System.out.println(outputQuantity);
+//        if (quantity > outputQuantity || quantity == outputQuantity) {
+//            quantity -= outputQuantity;
+//            product.setQuantity(quantity);
+//            this.productRepository.save(product);
+//            return this.stockOutputRepository.save(stockOutput);
+//        } else {
+//            throw new RuntimeException();
+//        }
+        this.stockOutputRepository.save(stockOutput);
+
         var product = this.productRepository.findById(stockOutput.getProduct().getId()).get();
         var quantity = this.productRepository.getQuantityByIdProduct(stockOutput.getProduct().getId());
         float outputQuantity = stockOutput.getQuantityOutput();
-        System.out.println(outputQuantity);
+        var sumOutput = this.stockOutputRepository.getSumOutputQuantity(stockOutput.getProduct().getId());
+        var sumInput = this.stockInputRepository.getSumInputQuantity(stockOutput.getProduct().getId());
+
+
         if (quantity > outputQuantity || quantity == outputQuantity) {
-            quantity -= outputQuantity;
-            product.setQuantity(quantity);
+            var newValue = sumInput - sumOutput;
+            product.setQuantity(newValue);
             this.productRepository.save(product);
-            return this.stockOutputRepository.save(stockOutput);
         } else {
             throw new RuntimeException();
         }
+
+        return this.stockOutputRepository.save(stockOutput);
     }
 
     public List<StockOutput> listAll() {
