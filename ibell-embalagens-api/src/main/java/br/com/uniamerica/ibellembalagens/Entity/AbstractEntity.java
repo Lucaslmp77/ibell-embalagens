@@ -1,5 +1,6 @@
 package br.com.uniamerica.ibellembalagens.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,10 +23,12 @@ public abstract class AbstractEntity {
     private Boolean active;
 
     @Getter @Setter
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
     @Column(name = "register", nullable = false)
     private LocalDateTime register;
 
     @Getter @Setter
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
     @Column(name = "update", nullable = true)
     private LocalDateTime update;
 

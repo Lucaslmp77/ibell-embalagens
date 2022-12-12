@@ -23,11 +23,16 @@ public interface StockOutputRepository extends JpaRepository<StockOutput, Long> 
     @Query("FROM StockOutput stockOutput WHERE stockOutput.client.id = :idClient")
     public List<StockOutput> findByClientInStockOutput(@Param("idClient") Long idClient);
 
+    @Query("FROM StockOutput stockOutput WHERE stockOutput.product.id = :idProduct")
+    public List<StockOutput> findByProductInStockOutput(@Param("idProduct") Long idProduct);
 
     @Query("SELECT stockOutput FROM StockOutput stockOutput WHERE stockOutput.active = true")
     public List<StockOutput> findByActiveStockOutputs();
 
     @Query("SELECT stockOutput FROM StockOutput stockOutput WHERE stockOutput.active = false")
     public List<StockOutput> findByInactiveStockOutputs();
+
+    @Query("SELECT SUM(stockOutput.quantityOutput) FROM StockOutput stockOutput WHERE stockOutput.product.id = :idProduct")
+    public Float getSumOutputQuantity(@Param("idProduct") Long idProduct);
 
 }
