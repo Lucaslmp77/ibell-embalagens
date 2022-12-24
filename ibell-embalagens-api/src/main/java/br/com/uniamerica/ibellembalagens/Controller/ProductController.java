@@ -90,5 +90,4 @@ public class ProductController {
     public ResponseEntity<?> findByInactiveProducts() {
         return ResponseEntity.ok().body(this.productService.findByInactiveProducts());
     }
-
 }

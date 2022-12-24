@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
@@ -28,5 +29,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("SELECT product.quantity FROM Product product WHERE product.id = :id")
     public Float getQuantityByIdProduct(Long id);
+
+//    @Query("SELECT product.unitValue FROM Product product WHERE product.id = :id")
+//    public BigDecimal getUnitValueByIdProduct(@Param("id") Long id);
 
 }

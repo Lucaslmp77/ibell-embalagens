@@ -72,4 +72,8 @@ public class ProductService {
         return this.productRepository.findByInactiveProducts();
     }
 
+//    public BigDecimal getUnitValueByIdProduct(Long id) {
+//        return this.productRepository.getUnitValueByIdProduct(id);
+//    }
+
 }
