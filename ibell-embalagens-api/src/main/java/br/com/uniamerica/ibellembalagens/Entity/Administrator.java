@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_administrator", schema = "ibell")
+@Table(name = "tb_administrator")
 public class Administrator extends AbstractEntity {
 
     @Getter @Setter

@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_stock_output", schema = "ibell")
+@Table(name = "tb_stock_output")
 public class StockOutput extends AbstractEntity {
 
     @Getter @Setter

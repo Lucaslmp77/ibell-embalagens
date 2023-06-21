@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Table(name = "tb_stock_input", schema = "ibell")
+@Table(name = "tb_stock_input")
 public class StockInput extends AbstractEntity {
 
     @Getter @Setter

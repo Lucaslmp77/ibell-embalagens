@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "tb_product", schema = "ibell")
+@Table(name = "tb_product")
 public class Product extends AbstractEntity {
 
     @Getter @Setter
