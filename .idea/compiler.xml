@@ -11,6 +11,10 @@
         <module name="projeto-ibell-embalagens" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ibell-embalagens-api" target="18" />
+      <module name="projeto-ibell-embalagens" target="18" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

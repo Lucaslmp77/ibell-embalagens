@@ -8,7 +8,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
-@Table(name = "tb_client")
+@Table(name = "tb_client", schema = "ibell")
 public class Client extends AbstractEntity {
 
     @Getter @Setter
