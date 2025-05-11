@@ -3,7 +3,6 @@ package br.com.uniamerica.ibellembalagens.service;
 import br.com.uniamerica.ibellembalagens.entity.Client;
 import br.com.uniamerica.ibellembalagens.repository.ClientRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

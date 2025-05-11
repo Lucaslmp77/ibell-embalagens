@@ -3,7 +3,6 @@ package br.com.uniamerica.ibellembalagens.service;
 import br.com.uniamerica.ibellembalagens.entity.Provider;
 import br.com.uniamerica.ibellembalagens.repository.ProviderRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -58,7 +57,6 @@ public class ProviderService {
             throw new RuntimeException();
         }
     }
-
 
     public List<Provider> findByActiveProviders() {
         return this.providerRepository.findByActiveProviders();

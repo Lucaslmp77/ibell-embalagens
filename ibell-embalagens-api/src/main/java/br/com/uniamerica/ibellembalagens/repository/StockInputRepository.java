@@ -27,7 +27,6 @@ public interface StockInputRepository extends JpaRepository<StockInput, Long> {
     @Query("FROM StockInput stockInput WHERE stockInput.provider.id = :idProvider")
     List<StockInput> findByProviderInStockInput(@Param("idProvider") Long idProvider);
 
-
     @Query("SELECT stockInput FROM StockInput stockInput WHERE stockInput.active = true")
     ArrayList<StockInput> findByActiveStockInputs();
 
@@ -36,8 +35,6 @@ public interface StockInputRepository extends JpaRepository<StockInput, Long> {
 
     @Query("SELECT SUM(stockInput.inputQuantity) FROM StockInput stockInput WHERE stockInput.product.id = :idProduct")
     Float getSumInputQuantity(@Param("idProduct") Long idProduct);
-
-
 
     @Query("SELECT (SUM(stockInput.inputQuantity * stockInput.costValue)) " +
             "FROM StockInput stockInput WHERE stockInput.product.id = :idProduct AND stockInput.active = TRUE")
