@@ -2,7 +2,7 @@ package br.com.uniamerica.ibellembalagens.controller;
 
 import br.com.uniamerica.ibellembalagens.entity.Administrator;
 import br.com.uniamerica.ibellembalagens.service.AdministratorService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@AllArgsConstructor
 @RequestMapping("/api/administrator")
 public class AdministratorController {
 
-    @Autowired
-    private AdministratorService administratorService;
+    private final AdministratorService administratorService;
 
     @PostMapping
     public ResponseEntity<?> save(
