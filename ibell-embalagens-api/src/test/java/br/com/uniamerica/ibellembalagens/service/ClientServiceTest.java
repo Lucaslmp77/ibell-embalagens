@@ -156,4 +156,22 @@ class ClientServiceTest {
         assertEquals(1, inactiveClients.size());
         verify(clientRepository, times(1)).findByInactiveClients();
     }
+
+    //Falhas controladas
+    @Test
+    void testFalha3_ComCnpjCpfDuplicado_DeveLancarExcecao() {
+        Client existing = new Client();
+        existing.setCnpjCpf("12345678900");
+
+        when(clientRepository.findByCnpjCpf("12345678900")).thenReturn(Optional.of(existing));
+
+        Client novo = new Client();
+        novo.setCnpjCpf("12345678900");
+
+        assertThrows(RuntimeException.class, () -> clientService.save(novo),
+                "Exceção ao tentar salvar CNPJ/CPF duplicado");
+
+        verify(clientRepository, never()).save(novo);
+        verify(clientRepository).findByCnpjCpf("12345678900");
+    }
 }

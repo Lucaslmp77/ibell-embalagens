@@ -93,4 +93,21 @@ class ClientTest {
         client.dateUpdate();
         assertNotNull(client.getUpdate());
     }
+
+    //Falhas controladas
+    @Test
+    void testFalha1_NomeComNumerosESimbolos() {
+        Client client = new Client();
+        client.setName("João 123!"); // Nome inválido
+        // Deveria falhar mas passa
+        assertTrue(validator.validate(client).isEmpty());
+    }
+
+    @Test
+    void testFalha2_CnpjCpfInvalido() {
+        Client client = new Client();
+        client.setCnpjCpf("111.111.111-11"); // CPF inválido
+        // Deveria falhar mas passa
+        assertTrue(validator.validate(client).isEmpty());
+    }
 }

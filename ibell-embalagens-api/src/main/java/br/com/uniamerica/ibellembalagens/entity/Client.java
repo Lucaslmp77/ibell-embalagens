@@ -10,9 +10,11 @@ import javax.validation.constraints.Email;
 @Getter @Setter
 public class Client extends AbstractEntity {
 
+    // FALHA 1: Não valida formato (permite números/símbolos no nome)
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
+    // FALHA 2: Não valida formato (CPF/CNPJ inválido passa)
     @Column(name = "cnpj_cpf", length = 18, nullable = false, unique = true)
     private String cnpjCpf;
 

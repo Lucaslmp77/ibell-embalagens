@@ -15,6 +15,7 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
 
+    // FALHA 3: Não verifica se CNPJ/CPF já existe antes de salvar
     @Transactional
     public Client save(Client client) {
         return this.clientRepository.save(client);

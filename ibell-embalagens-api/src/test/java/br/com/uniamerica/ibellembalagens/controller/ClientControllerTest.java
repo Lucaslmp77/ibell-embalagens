@@ -166,4 +166,15 @@ class ClientControllerTest {
         assertEquals(inactiveClients, response.getBody());
         verify(clientService).findByInactiveClients();
     }
+
+    //Falhas controladas
+    @Test
+    void testFalha4_FindByIdRetorna200ParaNaoEncontrado() {
+        when(clientService.findById(1L)).thenReturn(new Client()); // Objeto vazio
+
+        ResponseEntity<Client> response = clientController.findById(1L);
+
+        // Deveria ser NOT_FOUND
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
 }

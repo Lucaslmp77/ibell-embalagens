@@ -35,6 +35,7 @@ public class ClientController {
         return ResponseEntity.ok().body(this.clientService.listAll());
     }
 
+    // FALHA 4: Retorna 200 OK mesmo quando cliente não existe
     @GetMapping("/{idClient}")
     public ResponseEntity<Client> findById(
             @PathVariable("idClient") Long idClient
