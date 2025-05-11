@@ -8,11 +8,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ibell-embalagens-api" />
-        <module name="projeto-ibell-embalagens" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ibell-embalagens-api" target="18" />
       <module name="projeto-ibell-embalagens" target="18" />
     </bytecodeTargetLevel>
   </component>
