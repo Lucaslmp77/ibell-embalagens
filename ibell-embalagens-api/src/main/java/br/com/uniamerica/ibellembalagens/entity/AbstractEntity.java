@@ -10,24 +10,21 @@ import java.time.LocalDateTime;
 
 @MappedSuperclass
 @NoArgsConstructor
+@Getter @Setter
 public abstract class AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter @Setter
     @Column(name = "id", length = 25, nullable = false, unique = true)
     private Long id;
 
-    @Getter @Setter
     @Column(name = "active", nullable = false)
     private Boolean active;
 
-    @Getter @Setter
     @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
     @Column(name = "register", nullable = false)
     private LocalDateTime register;
 
-    @Getter @Setter
     @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
     @Column(name = "update", nullable = true)
     private LocalDateTime update;
