@@ -74,4 +74,27 @@ class AdministratorTest {
         assertNotNull(admin.getUpdate());
     }
 
+    //Falhas controladas
+    @Test
+    void testFalha1_UsernameComCaracteresInvalidos() {
+        Administrator admin = new Administrator();
+        admin.setUsername("admin@123"); // Caracteres especiais permitidos indevidamente
+        admin.setPassword("senhaValida");
+
+        // Deveria falhar mas passa (falha na validação)
+        assertTrue(validator.validate(admin).isEmpty(),
+                "Username com caracteres especiais deveria ser inválido");
+    }
+
+    @Test
+    void testFalha2_PasswordSemComplexidade() {
+        Administrator admin = new Administrator();
+        admin.setUsername("userValido");
+        admin.setPassword("123"); // Senha sem complexidade
+
+        // Deveria falhar mas passa (falha na validação)
+        assertTrue(validator.validate(admin).isEmpty(),
+                "Password sem complexidade deveria ser inválido");
+    }
+
 }

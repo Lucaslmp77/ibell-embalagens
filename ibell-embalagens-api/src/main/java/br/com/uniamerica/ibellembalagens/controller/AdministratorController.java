@@ -16,6 +16,7 @@ public class AdministratorController {
 
     private final AdministratorService administratorService;
 
+    // FALHA 3: Não valida os dados de entrada (username/password) antes de processar
     @PostMapping
     public ResponseEntity<?> save(
             @RequestBody Administrator administrator
@@ -35,6 +36,7 @@ public class AdministratorController {
         return ResponseEntity.ok().body(this.administratorService.listAll());
     }
 
+    // FALHA 4: Retorna 200 OK mesmo quando administrador não existe (deveria ser 404)
     @GetMapping("/{idAdm}")
     public ResponseEntity<Administrator> findById(
             @PathVariable("idAdm") Long idAdm

@@ -164,4 +164,32 @@ class AdministratorControllerTest {
         assertEquals(inactiveAdmins, response.getBody());
         verify(administratorService).findByInactiveAdm();
     }
+
+    //Falhas controladas
+    @Test
+    void testFalha5_SaveSemValidarDadosEntrada() {
+        Administrator invalidAdmin = new Administrator();
+        invalidAdmin.setUsername("a"); // Username muito curto
+        invalidAdmin.setPassword("1"); // Password muito curto
+
+        when(administratorService.save(any())).thenReturn(invalidAdmin);
+
+        ResponseEntity<?> response = administratorController.save(invalidAdmin);
+
+        // Deveria ser BAD_REQUEST mas é OK (falha no controller)
+        assertEquals(HttpStatus.OK, response.getStatusCode(),
+                "Deveria validar dados antes de processar");
+    }
+
+    @Test
+    void testFalha6_FindByIdRetorna200ParaNaoEncontrado() {
+        Administrator emptyAdmin = new Administrator(); // Objeto vazio
+        when(administratorService.findById(1L)).thenReturn(emptyAdmin);
+
+        ResponseEntity<Administrator> response = administratorController.findById(1L);
+
+        // Deveria ser NOT_FOUND mas é OK (falha no controller)
+        assertEquals(HttpStatus.OK, response.getStatusCode(),
+                "Deveria retornar 404 quando admin não existe");
+    }
 }
