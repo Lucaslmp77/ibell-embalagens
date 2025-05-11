@@ -167,7 +167,7 @@ class AdministratorControllerTest {
 
     //Falhas controladas
     @Test
-    void testFalha5_SaveSemValidarDadosEntrada() {
+    void testFalha3_SaveSemValidarDadosEntrada() {
         Administrator invalidAdmin = new Administrator();
         invalidAdmin.setUsername("a"); // Username muito curto
         invalidAdmin.setPassword("1"); // Password muito curto
@@ -182,7 +182,7 @@ class AdministratorControllerTest {
     }
 
     @Test
-    void testFalha6_FindByIdRetorna200ParaNaoEncontrado() {
+    void testFalha4_FindByIdRetorna200ParaNaoEncontrado() {
         Administrator emptyAdmin = new Administrator(); // Objeto vazio
         when(administratorService.findById(1L)).thenReturn(emptyAdmin);
 
