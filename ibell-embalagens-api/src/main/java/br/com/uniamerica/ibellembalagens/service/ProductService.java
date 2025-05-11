@@ -2,18 +2,20 @@ package br.com.uniamerica.ibellembalagens.service;
 
 import br.com.uniamerica.ibellembalagens.entity.Product;
 import br.com.uniamerica.ibellembalagens.repository.ProductRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 @Service
+@AllArgsConstructor
 public class ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Transactional
     public Product save(Product product) {
@@ -34,7 +36,7 @@ public class ProductService {
 
     @Transactional
     public void update(Long id, Product product) {
-        if(id == product.getId()) {
+        if(Objects.equals(id, product.getId())) {
             this.productRepository.save(product);
         } else {
             throw new RuntimeException();
@@ -44,7 +46,7 @@ public class ProductService {
     @Transactional
     public void disable(Long id){
         var product = this.productRepository.findById(id);
-        if (id == product.get().getId()) {
+        if (id.equals(product.get().getId())) {
             this.productRepository.disable(id);
         }
         else {
@@ -63,7 +65,6 @@ public class ProductService {
         }
     }
 
-
     public List<Product> findByActiveProducts() {
         return this.productRepository.findByActiveProducts();
     }
@@ -71,9 +72,5 @@ public class ProductService {
     public List<Product> findByInactiveProducts() {
         return this.productRepository.findByInactiveProducts();
     }
-
-//    public BigDecimal getUnitValueByIdProduct(Long id) {
-//        return this.productRepository.getUnitValueByIdProduct(id);
-//    }
 
 }

@@ -2,17 +2,17 @@ package br.com.uniamerica.ibellembalagens.service;
 
 import br.com.uniamerica.ibellembalagens.entity.Administrator;
 import br.com.uniamerica.ibellembalagens.repository.AdministratorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class AdministratorService {
 
-    @Autowired
-    private AdministratorRepository administratorRepository;
+    private final AdministratorRepository administratorRepository;
 
     @Transactional
     public Administrator save(Administrator administrator) {

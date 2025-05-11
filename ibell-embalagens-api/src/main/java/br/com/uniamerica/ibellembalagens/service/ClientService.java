@@ -2,17 +2,19 @@ package br.com.uniamerica.ibellembalagens.service;
 
 import br.com.uniamerica.ibellembalagens.entity.Client;
 import br.com.uniamerica.ibellembalagens.repository.ClientRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 
 @Service
+@AllArgsConstructor
 public class ClientService {
 
-    @Autowired
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
 
     @Transactional
     public Client save(Client client) {
@@ -29,7 +31,7 @@ public class ClientService {
 
     @Transactional
     public void update(Long id, Client client) {
-        if(id == client.getId()) {
+        if(Objects.equals(id, client.getId())) {
             this.clientRepository.save(client);
         } else {
             throw new RuntimeException();
@@ -39,7 +41,7 @@ public class ClientService {
     @Transactional
     public void disable(Long id){
         var client = this.clientRepository.findById(id);
-        if (id == client.get().getId()) {
+        if (id.equals(client.get().getId())) {
             this.clientRepository.disable(id);
         }
         else {
@@ -50,7 +52,7 @@ public class ClientService {
     @Transactional
     public void enabled(Long id){
         var client = this.clientRepository.findById(id);
-        if (id == client.get().getId()) {
+        if (id.equals(client.get().getId())) {
             this.clientRepository.enabled(id);
         }
         else {

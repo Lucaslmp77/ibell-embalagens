@@ -4,24 +4,24 @@ import br.com.uniamerica.ibellembalagens.entity.StockInput;
 import br.com.uniamerica.ibellembalagens.repository.ProductRepository;
 import br.com.uniamerica.ibellembalagens.repository.StockInputRepository;
 import br.com.uniamerica.ibellembalagens.repository.StockOutputRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 @Service
+@AllArgsConstructor
 public class StockInputService {
 
-    @Autowired
-    private StockInputRepository stockInputRepository;
+    private final StockInputRepository stockInputRepository;
 
-    @Autowired
-    private StockOutputRepository stockOutputRepository;
+    private final StockOutputRepository stockOutputRepository;
 
-    @Autowired
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     @Transactional
     public StockInput save(StockInput stockInput) {
@@ -39,12 +39,6 @@ public class StockInputService {
 
         var newQuantity = sumInput - sumOutput;
         product.setQuantity(newQuantity);
-
-//        var product = this.productRepository.findById(stockInput.getProduct().getId()).get();
-//        var quantity = this.productRepository.getQuantityByIdProduct(stockInput.getProduct().getId());
-//        float quantityInput = stockInput.getInputQuantity();
-//        quantity += quantityInput;
-//        product.setQuantity(quantity);
 
         var value = this.stockInputRepository.updateNewCostValue(stockInput.getProduct().getId());
         var quantity = this.productRepository.getQuantityByIdProduct(stockInput.getProduct().getId());
@@ -67,7 +61,7 @@ public class StockInputService {
 
     @Transactional
     public void update(Long id, StockInput stockInput) {
-        if(id == stockInput.getId()) {
+        if(Objects.equals(id, stockInput.getId())) {
             this.stockInputRepository.save(stockInput);
         } else {
             throw new RuntimeException();
@@ -77,7 +71,7 @@ public class StockInputService {
     @Transactional
     public void disable(Long id){
         var stockInput = this.stockInputRepository.findById(id);
-        if (id == stockInput.get().getId()) {
+        if (id.equals(stockInput.get().getId())) {
             this.stockInputRepository.disable(id);
         }
         else {
@@ -88,7 +82,7 @@ public class StockInputService {
     @Transactional
     public void enabled(Long id){
         var stockInput = this.stockInputRepository.findById(id);
-        if (id == stockInput.get().getId()) {
+        if (id.equals(stockInput.get().getId())) {
             this.stockInputRepository.enabled(id);
         }
         else {
