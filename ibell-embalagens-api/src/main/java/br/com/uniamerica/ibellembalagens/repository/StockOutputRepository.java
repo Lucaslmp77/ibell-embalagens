@@ -14,25 +14,25 @@ public interface StockOutputRepository extends JpaRepository<StockOutput, Long> 
 
     @Modifying
     @Query("UPDATE StockOutput stockOutput SET stockOutput.active = false WHERE stockOutput.id = :id")
-    public void disable(@Param("id") Long id);
+    void disable(@Param("id") Long id);
 
     @Modifying
     @Query("UPDATE StockOutput stockOutput SET stockOutput.active = true WHERE stockOutput.id = :id")
-    public void enabled(@Param("id") Long id);
+    void enabled(@Param("id") Long id);
 
     @Query("FROM StockOutput stockOutput WHERE stockOutput.client.id = :idClient")
-    public List<StockOutput> findByClientInStockOutput(@Param("idClient") Long idClient);
+    List<StockOutput> findByClientInStockOutput(@Param("idClient") Long idClient);
 
     @Query("FROM StockOutput stockOutput WHERE stockOutput.product.id = :idProduct")
-    public List<StockOutput> findByProductInStockOutput(@Param("idProduct") Long idProduct);
+    List<StockOutput> findByProductInStockOutput(@Param("idProduct") Long idProduct);
 
     @Query("SELECT stockOutput FROM StockOutput stockOutput WHERE stockOutput.active = true")
-    public List<StockOutput> findByActiveStockOutputs();
+    List<StockOutput> findByActiveStockOutputs();
 
     @Query("SELECT stockOutput FROM StockOutput stockOutput WHERE stockOutput.active = false")
-    public List<StockOutput> findByInactiveStockOutputs();
+    List<StockOutput> findByInactiveStockOutputs();
 
     @Query("SELECT SUM(stockOutput.quantityOutput) FROM StockOutput stockOutput WHERE stockOutput.product.id = :idProduct")
-    public Float getSumOutputQuantity(@Param("idProduct") Long idProduct);
+    Float getSumOutputQuantity(@Param("idProduct") Long idProduct);
 
 }
